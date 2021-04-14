@@ -58,7 +58,9 @@ export default function TaskAddingComponent({
   };
   const handleClose = () => {
     console.log(task);
-    dispatch(postUserTaskId(task));
+    if (task.data.details.taskName !== "") {
+      dispatch(postUserTaskId(task));
+    }
     setOpen(false);
   };
 
@@ -72,7 +74,7 @@ export default function TaskAddingComponent({
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogTitle id="form-dialog-title">Adding Task</DialogTitle>
         <DialogContent>
           <DialogContentText>Sub Add Task</DialogContentText>
           <TextField
@@ -103,7 +105,7 @@ export default function TaskAddingComponent({
             Cancel
           </Button>
           <Button onClick={handleClose} color="primary">
-            Subscribe
+            Add
           </Button>
         </DialogActions>
       </Dialog>

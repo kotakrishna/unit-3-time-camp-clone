@@ -16,9 +16,13 @@ import {
   POST_USER_TASK_ID_SUCCESS,
 } from "./actionType";
 import axios from "axios";
-import { v4 as uuid } from "uuid";
+// import { getLocalStorage, setLocalStorage } from "../Components/LocalStorage";
+
 // import { useSelector } from "react-redux";
 
+// const userId = getLocalStorage("userId");
+// const projects = getLocalStorage("projects");
+// const tasks = getLocalStorage("tasks");
 export const getUserIdRequest = () => {
   return {
     type: GET_USER_ID_REQUEST,
@@ -111,6 +115,7 @@ export const getUserId = (payload) => async (dispatch) => {
       .then((res) => {
         // console.log(res.data);
         // console.log(res.data[0].userId);
+        // setLocalStorage("userId", res.data[0].userId);
         dispatch(getUserIdSuccess(res.data[0].userId));
         dispatch(getUserProjectId(res.data[0].userId));
       })
@@ -137,6 +142,7 @@ export const getUserProjectId = (payload) => async (dispatch) => {
         const aryId = res.data.map((i) => i.project);
         // projId = aryId;
         dispatch(getUserProjectIdSuccess(aryId));
+        // setLocalStorage("projects", aryId);
         // dispatch(getUserTasks(aryId[0]));
         dispatch(getUserTasksUserId(payload));
         console.log(aryId);
@@ -169,7 +175,7 @@ export const postUserProjectId = (payload) => async (dispatch) => {
       )
       .then((res) => {
         console.log(res);
-        dispatch(getUserProjectId(payload.userId));
+        dispatch(getUserProjectId());
       })
       .catch((er) => {
         console.log(er);
@@ -192,7 +198,8 @@ export const postUserTaskId = (payload) => async (dispatch) => {
       )
       .then((res) => {
         console.log(res);
-        dispatch(getUserProjectId(payload.projectId));
+        console.log(payload);
+        dispatch(getUserProjectId(payload.userId));
         // dispatch(getUserProjectId(payload.userId));
       })
       .catch((er) => {
@@ -220,6 +227,7 @@ export const getUserTasks = (payload) => async (dispatch) => {
         console.log(res);
         // const aryId = res.data.map((i) => i.projectId);
         dispatch(getTaskSuccess(res.data));
+        // setLocalStorage("tasks", res.data);
         // console.log(aryId);
         // dispatch(getUserIdSuccess())
       })
