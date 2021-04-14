@@ -13,6 +13,7 @@ export default function Routes() {
       <Switch>
         <Route path="/" exact>
           <Home />
+          {/* <h1>Wow</h1> */}
         </Route>
         <Route path="/auth-login" exact>
           <AuthLogin />
