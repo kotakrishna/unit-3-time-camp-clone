@@ -50,7 +50,7 @@ export default function ProjectAddingComponent({ children }) {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogTitle id="form-dialog-title">Add Project</DialogTitle>
         <DialogContent>
           <DialogContentText>Sub Add Task</DialogContentText>
           <TextField
@@ -81,7 +81,7 @@ export default function ProjectAddingComponent({ children }) {
             Cancel
           </Button>
           <Button onClick={handleClose} color="primary">
-            Subscribe
+            Add
           </Button>
         </DialogActions>
       </Dialog>

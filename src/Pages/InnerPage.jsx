@@ -4,6 +4,7 @@ import { getUserId, getUserProjectId, getUserTasks } from "../Redux/action";
 import { Link } from "react-router-dom";
 import ProjectAddingComponent from "../Components/ProjectAddingComponent";
 import TaskAddingComponent from "../Components/TaskAddingComponent";
+import ProjectAccordion from "../Components/ProjectAccordion";
 
 export default function InnerPage() {
   const dispatch = useDispatch();
@@ -29,15 +30,21 @@ export default function InnerPage() {
       <div>
         {project.map((i) => (
           <div
-            style={{
-              border: "1px solid black",
-              width: "1000px",
-              display: "grid",
-              gridTemplateColumns: "auto auto auto",
-              margin: " auto",
-            }}
+            key={i.taskId}
+            // style={{
+            //   border: "1px solid black",
+            //   width: "1000px",
+            //   display: "grid",
+            //   gridTemplateColumns: "auto auto auto",
+            //   margin: " auto",
+            // }}
           >
-            <div>
+            <ProjectAccordion
+              subTask={tasks?.filter((task) => task.projectId === i.projectId)}
+            >
+              {i.projectName}
+            </ProjectAccordion>
+            {/* <div>
               <h1>{i.projectName}</h1>
             </div>
             <div>
@@ -45,10 +52,11 @@ export default function InnerPage() {
             </div>
             <button onClick={() => handleProject(i.projectId)}>
               Get tasks of this project
-            </button>
+            </button> */}
           </div>
         ))}
       </div>
+      <h1>All Tasks</h1>
       <div>
         {tasks?.map((task) => (
           <div
@@ -56,19 +64,21 @@ export default function InnerPage() {
             style={{
               display: "grid",
               border: "1px solid black",
-              padding: "2%",
-              gridTemplateColumns: "auto auto auto",
+              padding: "1%",
+              width: "700px",
+              margin: "auto",
+              gridTemplateColumns: "150px 400px 100px",
             }}
           >
-            <h1>{task.data.details.taskName}</h1>
-            <h1>{task.data.details.taskNotes}</h1>
+            <h2>{task.data.details.taskName}</h2>
+            <h4>{task.data.details.taskNotes}</h4>
             <div>
               <TaskAddingComponent
                 parentId={task.taskId}
                 userId={task.userId}
                 projectId={task.projectId}
               >
-                {console.log(task.taskId, task.userId, task.projectId)}
+                {/* {console.log(task.taskId, task.userId, task.projectId)} */}
                 Add Another Task
               </TaskAddingComponent>
             </div>
