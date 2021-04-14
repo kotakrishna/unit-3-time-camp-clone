@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap');
 .homeCont{
     font-family: lato,sans-serif;
 }
@@ -59,7 +61,7 @@
 }
 .track{
     display: flex;
-    width:90%;
+    width:85%;
     justify-content: space-around;
     margin:auto;
     margin-top: 80px;
@@ -68,6 +70,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width:50%;
+}
+.trackImg>img{
+    width:100%;
 }
 .track>div>h2{
     margin-bottom: 2rem;
@@ -90,4 +96,40 @@
 }
 .track>div>p>span{
     font-weight: 800;
+}
+.demoCont{
+    width:85%;
+    background-color: #F3F3F3;
+    margin:200px auto;
+    height:400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.demoCont>div{
+    width:70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    
+}
+.demoCont>div>h2{
+    font-size: 42px;
+    font-weight: 800;
+    font-family: 'Lato', sans-serif;
+}
+.demoCont>div>p{
+    font-size: 21px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+}
+.integration{
+    background-color: #F3F3F3;
+    display:flex;
+    justify-content: space-around;
+}
+.integration>div{
+    width:40%
 }
