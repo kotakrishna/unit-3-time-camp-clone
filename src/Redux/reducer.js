@@ -15,7 +15,7 @@ const initial = {
   isLoading: false,
   isError: false,
   userId: 0,
-  projectId: [],
+  project: [],
   data: {
     isDataLoading: false,
     isDataError: false,
@@ -45,18 +45,18 @@ export function reducer(state = initial, { type, payload }) {
     case GET_USER_PROJECT_ID_REQUEST:
       return {
         ...state,
-        projectId: [],
+        project: [],
       };
     case GET_USER_PROJECT_ID_SUCCESS:
       console.log(payload);
       return {
         ...state,
-        projectId: payload,
+        project: payload,
       };
     case GET_USER_PROJECT_ID_FAILURE:
       return {
         ...state,
-        projectId: [],
+        project: [],
       };
 
     case GET_USER_TASK_REQUEST:
