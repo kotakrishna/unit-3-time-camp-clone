@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap');
+.homeCont{
+    font-family: lato,sans-serif;
+}
+.adv{
+    width:90%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin:auto;
+    
+}
+.text{
+    font-weight:700;
+    font-size:16px;
+    color:#1b1b20;
+}
+.line{
+    width:27%;
+    border-bottom: 0.1px solid rgb(179, 176, 176);
+}
+.teamLogo{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    width:85%;
+    margin:10px auto;
+}
+.teams{
+    display:flex;
+    flex-direction: column;
+}
+.teams>img{
+    margin-bottom: 10px;
+}
+.timeCampDet{
+    margin-top: 50px;
+}
+.timeCampDet>div{
+    width:50%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin:auto;
+}
+.timeCampDet>div>h2{
+    font-size: 36px;
+    font-weight: 800;
+    text-align: center;
+
+}
+.timeCampDet>div>p{
+    font-size: 16px;
+    text-align: center;
+    font-weight: 600;
+    color: #1b1b20;
+    font-family: nunito sans,sans-serif;
+    line-height: 1.5;
+}
+.track{
+    display: flex;
+    width:85%;
+    justify-content: space-around;
+    margin:auto;
+    margin-top: 80px;
+}
+.trackImg{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:50%;
+}
+.trackImg>img{
+    width:100%;
+}
+.track>div>h2{
+    margin-bottom: 2rem;
+    font-size: 36px;
+    text-align: left;
+    font-weight: 700;
+}
+.track>div>h2>span{
+    color:#29BF71;
+}
+.track>div>p{
+    margin-bottom: 2rem;
+    text-align: left;
+    font-size: 16px;
+    color: #1b1b20;
+    font-family: 'Nunito Sans', sans-serif;
+    padding-right: 5rem;
+    line-height: 1.5;
+    font-weight: 600;
+}
+.track>div>p>span{
+    font-weight: 800;
+}
+.demoCont{
+    width:85%;
+    background-color: #F3F3F3;
+    margin:200px auto;
+    height:400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.demoCont>div{
+    width:70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    
+}
+.demoCont>div>h2{
+    font-size: 42px;
+    font-weight: 800;
+    font-family: 'Lato', sans-serif;
+}
+.demoCont>div>p{
+    font-size: 21px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: bold;
+}
+.integration{
+    background-color: #F3F3F3;
+    display:flex;
+    justify-content: space-around;
+}
+.integration>div{
+    width:40%
+}
