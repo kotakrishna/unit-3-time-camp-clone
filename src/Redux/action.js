@@ -8,9 +8,16 @@ import {
   GET_USER_TASK_FAILURE,
   GET_USER_TASK_REQUEST,
   GET_USER_TASK_SUCCESS,
+  POST_USER_PROJECT_ID_FAILURE,
+  POST_USER_PROJECT_ID_REQUEST,
+  POST_USER_PROJECT_ID_SUCCESS,
+  POST_USER_TASK_ID_FAILURE,
+  POST_USER_TASK_ID_REQUEST,
+  POST_USER_TASK_ID_SUCCESS,
 } from "./actionType";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { v4 as uuid } from "uuid";
+// import { useSelector } from "react-redux";
 
 export const getUserIdRequest = () => {
   return {
@@ -41,6 +48,39 @@ export const getUserProjectIdFailure = () => {
 export const getUserProjectIdSuccess = (payload) => {
   return {
     type: GET_USER_PROJECT_ID_SUCCESS,
+    payload,
+  };
+};
+export const postUserProjectIdRequest = () => {
+  return {
+    type: POST_USER_PROJECT_ID_REQUEST,
+  };
+};
+export const postUserProjectIdFailure = () => {
+  return {
+    type: POST_USER_PROJECT_ID_FAILURE,
+  };
+};
+export const postUserProjectIdSuccess = (payload) => {
+  return {
+    type: POST_USER_PROJECT_ID_SUCCESS,
+    payload,
+  };
+};
+
+export const postUserTaskIdRequest = () => {
+  return {
+    type: POST_USER_TASK_ID_REQUEST,
+  };
+};
+export const postUserTaskIdFailure = () => {
+  return {
+    type: POST_USER_TASK_ID_FAILURE,
+  };
+};
+export const postUserTaskIdSuccess = (payload) => {
+  return {
+    type: POST_USER_TASK_ID_SUCCESS,
     payload,
   };
 };
@@ -94,7 +134,7 @@ export const getUserProjectId = (payload) => async (dispatch) => {
       )
       .then((res) => {
         // console.log(res.data);
-        const aryId = res.data.map((i) => i.projectId);
+        const aryId = res.data.map((i) => i.project);
         // projId = aryId;
         dispatch(getUserProjectIdSuccess(aryId));
         // dispatch(getUserTasks(aryId[0]));
@@ -108,6 +148,58 @@ export const getUserProjectId = (payload) => async (dispatch) => {
   } catch (error) {
     console.log(error);
     dispatch(getUserProjectIdFailure());
+  }
+};
+export const postUserProjectId = (payload) => async (dispatch) => {
+  try {
+    dispatch(postUserProjectIdRequest());
+    console.log(payload);
+    const project = payload.project;
+    const load = {
+      // id: uuid(),
+      userId: payload.userId,
+      project,
+    };
+    console.log(load);
+    await axios
+      .post(
+        `https://json-server-mocker-masai-test.herokuapp.com/projects`,
+        payload
+      )
+      .then((res) => {
+        console.log(res);
+        dispatch(getUserProjectId(payload.userId));
+      })
+      .catch((er) => {
+        console.log(er);
+        dispatch(postUserProjectIdFailure());
+      });
+  } catch (error) {
+    console.log(error);
+    dispatch(postUserProjectIdFailure());
+  }
+};
+
+export const postUserTaskId = (payload) => async (dispatch) => {
+  try {
+    dispatch(postUserTaskIdRequest());
+    console.log(payload);
+    await axios
+      .post(
+        `https://json-server-mocker-masai-test.herokuapp.com/tasks`,
+        payload
+      )
+      .then((res) => {
+        console.log(res);
+        // dispatch(getUserProjectId(payload.userId));
+      })
+      .catch((er) => {
+        console.log(er);
+        dispatch(postUserTaskIdFailure());
+      });
+  } catch (error) {
+    console.log(error);
+    dispatch(postUserTaskIdFailure());
   }
 };
 
