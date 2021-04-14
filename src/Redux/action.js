@@ -138,6 +138,7 @@ export const getUserProjectId = (payload) => async (dispatch) => {
         // projId = aryId;
         dispatch(getUserProjectIdSuccess(aryId));
         // dispatch(getUserTasks(aryId[0]));
+        dispatch(getUserTasksUserId(payload));
         console.log(aryId);
         // dispatch(getUserIdSuccess())
       })
@@ -191,6 +192,7 @@ export const postUserTaskId = (payload) => async (dispatch) => {
       )
       .then((res) => {
         console.log(res);
+        dispatch(getUserProjectId(payload.projectId));
         // dispatch(getUserProjectId(payload.userId));
       })
       .catch((er) => {
@@ -213,6 +215,30 @@ export const getUserTasks = (payload) => async (dispatch) => {
     await axios
       .get(
         `https://json-server-mocker-masai-test.herokuapp.com/tasks?projectId=${payload}`
+      )
+      .then((res) => {
+        console.log(res);
+        // const aryId = res.data.map((i) => i.projectId);
+        dispatch(getTaskSuccess(res.data));
+        // console.log(aryId);
+        // dispatch(getUserIdSuccess())
+      })
+      .catch((er) => {
+        console.log(er);
+        dispatch(getTaskFailure());
+      });
+  } catch (error) {
+    console.log(error);
+    dispatch(getTaskFailure());
+  }
+};
+export const getUserTasksUserId = (payload) => async (dispatch) => {
+  try {
+    dispatch(getTaskRequest());
+    console.log(payload);
+    await axios
+      .get(
+        `https://json-server-mocker-masai-test.herokuapp.com/tasks?userId=${payload}`
       )
       .then((res) => {
         console.log(res);

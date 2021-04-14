@@ -2,16 +2,12 @@ import React from "react";
 import { postUserProjectId, postUserTaskId } from "../Redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuid } from "uuid";
+import TaskAddingComponent from "../Components/TaskAddingComponent";
 export default function InputTask() {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.userId);
   const tasks = useSelector((state) => state.data.tasks);
-  //     React.useEffect(() => {
 
-  //     return () => {
-  //         cleanup
-  //     }
-  // }, [])
   const initProject = {
     projectName: "",
     projectId: uuid(),
@@ -132,9 +128,18 @@ export default function InputTask() {
       </div>
       <div>
         {tasks.map((task) => (
-          <>
+          <div>
             <h1>{task.data.details.taskName}</h1>
-          </>
+            {/* <button> */}
+            <TaskAddingComponent
+              parentId={task.taskId}
+              userId={task.userId}
+              projectId={task.projectId}
+            >
+              AdD new Task
+            </TaskAddingComponent>
+            {/* </button> */}
+          </div>
         ))}
       </div>
     </div>
