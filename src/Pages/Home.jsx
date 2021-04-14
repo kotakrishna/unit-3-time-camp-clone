@@ -1,7 +1,19 @@
 import React from 'react'
 import styles from './Home.module.css'
+import styled from 'styled-components'
 export default function Home(){
-    
+    const Button = styled.button`
+    outline:none;
+    background:#f1b709;
+    width:300px;
+    padding:15px;
+    border:none;
+    color:#ffff;
+    font-size:15px;
+    border-radius:25px;
+    font-weight:700;
+
+  `;
     return (
         <div className = {styles.homeCont}>
             
@@ -62,6 +74,9 @@ export default function Home(){
                   <h2>Restoring clarity thanks to <span>time tracking software</span></h2>
                   <p>Are you struggling to keep track of your team's performance across different projects? <strong>Say "goodbye" to spreadsheets and guesswork.</strong>  Let TimeCamp do the time tracking and focus on the work that matters.</p>
                   <p>Why waste countless hours on additional data processing just to have a precise report? TimeCamp does it all automatically so you can maintain your focus on the important work.
+import { styled } from 'styled-components';
+import { styled } from 'styled-components';
+import { styled } from 'styled-components';
 
 
 
