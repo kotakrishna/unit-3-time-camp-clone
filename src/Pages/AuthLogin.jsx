@@ -1,7 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserId, getUserProjectId } from "../Redux/action";
-import { useHistory, Redirect } from "react-router-dom";
+import { useHistory, Redirect, NavLink } from "react-router-dom";
+import { TimeSheets } from "../MainApp/AppPages/TimeSheets";
+
 export default function AuthLogin() {
   // const isAuth = useSelector((state) => state.isAuth);
 
@@ -30,6 +32,14 @@ export default function AuthLogin() {
           <button onClick={handleLogin}>User Login</button>
         </div>
       </div>
+      {/* 
+        Just for testing ... i am calling TimeSheets page
+      */}
+        <NavLink to='/timesheets'>
+          TimeSheets
+        </NavLink>
+        {/* For testing only */}
+
       {page ? <Redirect to="/inner-page" /> : null}
     </>
   );

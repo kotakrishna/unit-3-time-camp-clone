@@ -1,0 +1,214 @@
+.timeSheets{
+    display:flex;
+    justify-content: space-between;
+    height:40px;
+    width:95%;
+    margin: auto;
+}
+/* .timeSheets>div{
+    border: 1px solid rgb(202, 200, 200);
+} */
+.calendar{
+    display:flex;
+    height:40px;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid rgb(202, 200, 200);
+}
+.calendar>div{
+    height: 100%;
+    
+}
+.date{
+    border:none;
+    color: #3e3e3e;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    padding:0 10px;
+}
+.prev{
+    font-size:25px;
+    width:40px;
+    text-align: center;
+    border-right: 1px solid rgb(202, 200, 200);
+}
+.next{
+    font-size:25px;
+    width:40px;
+    text-align: center;
+    border-left: 1px solid rgb(202, 200, 200);
+}
+.calLogo{
+    width:50px;
+    display:flex;
+    align-items: center;
+}
+.calLogo>img{
+    width:50%;
+    height:60%;
+}
+.calLogo>div{
+    font-size:25px;
+    width:40px;
+    text-align: center;
+    transform: rotate(180deg);
+}
+.sortAndEdit{
+    display:flex;
+    justify-content: space-around;
+}
+.edit{
+    width:120px;
+    display:flex;
+    align-items: center;
+    border: 1px solid rgb(202, 200, 200);
+    border-radius: 10px;
+    justify-content: space-around;
+}
+.edit>img{
+    width:25%;
+    height:60%;
+}
+.refresh{
+    width:60px;
+    border: 1px solid rgb(202, 200, 200);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.refresh>img{
+    
+    height:60%;
+}
+.sortAndEdit>div{
+    margin:0 5px; 
+}
+.dayWeek{
+    border: 1px solid rgb(202, 200, 200);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width:150px;
+}
+.dayWeek>div{
+    margin:0 5px;
+}
+.logo{
+    border: 1px solid rgb(202, 200, 200);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width:100px;
+}
+
+.taskCont{
+    width:95%;
+    margin: 50px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:10px 20px;
+    background: #F8F8F8;
+    height:80px;
+}
+.selectInp{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width:300px;
+    height: 60px!important;
+    font-size: 14px;
+    font-weight: 400;
+    font-size: 14px;
+    font-weight: 400;
+    padding-left: 10px;
+    color: #3e3e3e;
+}
+.middle{
+    width:1px;
+    height:100%;
+    border-right:1px solid rgb(202, 200, 200);
+}
+.note{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width:60px;
+    height: 40px!important;
+    font-size: 14px;
+    font-weight: 400;
+    font-size: 14px;
+    font-weight: 400;
+    padding-left: 10px;
+    color: #3e3e3e;
+}
+.timerCont{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.timerCont>div{
+    margin:0 5px;
+}
+.timer{
+    padding:0 10px;
+}
+.timer>input{
+    border: none;
+    outline: none;
+    height:40px!important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.duration{
+    height:40px!important;
+    width:60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tasksCont{
+    width:90%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    border:1px solid rgb(202, 200, 200);
+    border-radius: 10px;
+}
+.start{
+    width: 0;
+	height: 0;
+	border-top: 5px solid transparent;
+	border-left: 10px solid #929292;
+	border-bottom: 5px solid transparent;
+    margin:0 10px;
+}
+.start:hover{
+    width: 0;
+	height: 0;
+	border-top: 5px solid transparent;
+	border-left: 10px solid #ffff;
+	border-bottom: 5px solid transparent;
+    margin:0 10px;
+}
+.stop{
+    width:35px;
+    height:35px;
+    background: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+.stop>div{
+    width:10px;
+    height:10px;
+    background: white;
+    border-radius: 3px;
+}
