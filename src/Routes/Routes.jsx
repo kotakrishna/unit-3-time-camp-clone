@@ -8,6 +8,7 @@ import Footer from "../Components/Footer";
 import InnerPage from "../Pages/InnerPage";
 import InputTask from "../Pages/InputTask";
 import PrivateRoute from "../Components/PrivateRoute";
+import { TimeSheets } from '../MainApp/AppPages/TimeSheets';
 export default function Routes() {
   return (
     <div>
@@ -15,6 +16,10 @@ export default function Routes() {
       <Switch>
         <Route path="/" exact>
           <Home />
+          {/* <h1>Wow</h1> */}
+        </Route>
+        <Route path="/timesheets" exact>
+          <TimeSheets />
           {/* <h1>Wow</h1> */}
         </Route>
         <Route path="/auth-login" exact>
