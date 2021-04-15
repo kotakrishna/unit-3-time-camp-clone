@@ -49,10 +49,7 @@ export default function TaskAddingComponent({
       data: { ...task.data, details: { ...task.data.details, [name]: value } },
     });
   };
-  const handleSubmitTask = (e) => {
-    // e.preventDefault();
-    console.log(task);
-  };
+
   const handleClickOpen = () => {
     setOpen(true);
   };
