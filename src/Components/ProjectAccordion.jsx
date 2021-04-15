@@ -42,16 +42,21 @@ export default function ProjectAccordion({
         </AccordionSummary>
         {subTask.length > 0 &&
           subTask?.map((task) => {
-            return (
+            return !task.data.addedToTimeSheets ? (
               <ProjectAccordion
                 key={task.taskId}
                 style={{ minWidth: "900px" }}
                 // style={{ display: "flex" }}
                 subTask={subTask.filter((some) => {
-                  // if (some.parentId === task.taskId) {
-                  //   some.data.addedToTimeSheets = true;
-                  // }
-                  return some.parentId === task.taskId;
+                  if (some.parentId === task.taskId) {
+                    some.data.addedToTimeSheets = true;
+                  } else {
+                    some.data.addedToTimeSheets = false;
+                  }
+                  return (
+                    // some.parentId === task.taskId &&
+                    some.data.addedToTimeSheets === true
+                  );
                 })}
                 // marginL={"10px"}
               >
@@ -70,7 +75,7 @@ export default function ProjectAccordion({
                   </div>
                 </div>
               </ProjectAccordion>
-            );
+            ) : null;
           })}
         {subTask.length === 0 && (
           <AccordionDetails>
@@ -87,33 +92,6 @@ export default function ProjectAccordion({
           </AccordionDetails>
         )}
       </Accordion>
-      {/* <Typography className={classes.heading}>Disabled Accordion</Typography> */}
-      {/* <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-        >
-          <Typography className={classes.heading}>Accordion 2</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion disabled>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel3a-content"
-          id="panel3a-header"
-        >
-          <Typography className={classes.heading}>
-            Disabled Accordion
-          </Typography>
-        </AccordionSummary>
-      </Accordion> */}
     </div>
   );
 }

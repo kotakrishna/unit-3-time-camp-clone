@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Home.module.css";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 export default function Home() {
   const Button = styled.button`
     outline: none;
@@ -15,6 +16,10 @@ export default function Home() {
   `;
   return (
     <div className={styles.homeCont}>
+      <NavLink to='/timesheets'>
+        <h3>Time sheets</h3>
+      </NavLink>
+
       <div className={styles.adv}>
         <div className={styles.line}></div>
         <h2 className={styles.text}>
