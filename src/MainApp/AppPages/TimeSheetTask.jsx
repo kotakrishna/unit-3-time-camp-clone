@@ -52,7 +52,9 @@ export function TimeSheetTask({data}){
                     taskNotes: data.data.details.taskNotes,
                     
                 }
-                let timeSpent = moment(moment(params.stopTime,"hh:mm:ss").subtract(moment(params.startTime,"hh:mm:ss"))).format("hh:mm:ss")
+                let timeStart = moment(params.startTime, "hh:mm:ss")
+                let timeStop = moment(params.stopTime,"hh:mm:ss")
+                let timeSpent = timeStart.subtract(timeStop)
                 dispatch(updateTasks(params,data.id, timeSpent))
             } else {
                 const params = {
