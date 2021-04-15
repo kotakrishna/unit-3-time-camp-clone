@@ -101,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function AuthLogin() {
-  const isAuth = useSelector((state) => state.isAuth);
+  const isAuth = useSelector((state) => state.log.isAuth);
   React.useEffect(() => {
     console.log(isAuth);
   }, [isAuth]);

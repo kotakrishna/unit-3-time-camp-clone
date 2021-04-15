@@ -3,13 +3,13 @@ import { postUserProjectId, postUserTaskId } from "../Redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuid } from "uuid";
 import TaskAddingComponent from "../Components/TaskAddingComponent";
-import { getLocalStorage } from "../Components/LocalStorage";
+// import { getLocalStorage } from "../Components/LocalStorage";
 export default function InputTask() {
   const dispatch = useDispatch();
-  const userId =
-    useSelector((state) => state.userId) || getLocalStorage("userId");
-  const tasks =
-    useSelector((state) => state.data.tasks) || getLocalStorage("tasks");
+  const userId = useSelector((state) => state.log.userId);
+  // || getLocalStorage("userId");
+  const tasks = useSelector((state) => state.log.data.tasks);
+  //  || getLocalStorage("tasks");
 
   const initProject = {
     projectName: "",

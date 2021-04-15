@@ -8,34 +8,44 @@ import Footer from "../Components/Footer";
 import InnerPage from "../Pages/InnerPage";
 import InputTask from "../Pages/InputTask";
 import PrivateRoute from "../Components/PrivateRoute";
-import { TimeSheets } from '../MainApp/AppPages/TimeSheets';
+import { TimeSheets } from "../MainApp/AppPages/TimeSheets";
+import NavBarLogin from "../Components/NavBarLogin";
 export default function Routes() {
   return (
     <div>
-      <NavBar />
       <Switch>
         <Route path="/" exact>
+          <NavBar />
           <Home />
+          <Footer />
           {/* <h1>Wow</h1> */}
         </Route>
-        <Route path="/timesheets" exact>
+        <PrivateRoute path="/timesheets" exact>
+          <NavBarLogin />
           <TimeSheets />
+          <Footer />
           {/* <h1>Wow</h1> */}
-        </Route>
+        </PrivateRoute>
         <Route path="/auth-login" exact>
           <AuthLogin />
+          <Footer />
         </Route>
         <Route path="/auth-register" exact>
+          <NavBar />
           <AuthRegister />
+          <Footer />
         </Route>
         <PrivateRoute path="/inner-page" exact>
+          <NavBarLogin />
           <InnerPage />
         </PrivateRoute>
         <PrivateRoute path="/input-page" exact>
+          <NavBarLogin />
           <InputTask />
+          <Footer />
         </PrivateRoute>
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

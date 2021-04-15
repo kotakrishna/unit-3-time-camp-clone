@@ -9,8 +9,8 @@ import ProjectAccordion from "../Components/ProjectAccordion";
 export default function InnerPage() {
   // const dispatch = useDispatch();
 
-  const project = useSelector((state) => state.project);
-  const tasks = useSelector((state) => state.data.tasks);
+  const project = useSelector((state) => state.log.project);
+  const tasks = useSelector((state) => state.log.data.tasks);
   console.log(tasks);
   // const handleProject = (i) => {
   //   console.log(i);
