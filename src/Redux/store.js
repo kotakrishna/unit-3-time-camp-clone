@@ -3,9 +3,9 @@ import thunk from "redux-thunk";
 import { appReducer } from "../MainApp/Redux/appReducer";
 import { reducer } from "./reducer";
 const rootReducer = combineReducers({
-  reducer,
-  appRed:appReducer
-})
+  log: reducer,
+  appRed: appReducer,
+});
 export const store = createStore(
   rootReducer,
   compose(
