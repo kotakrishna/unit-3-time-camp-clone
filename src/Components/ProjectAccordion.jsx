@@ -22,6 +22,7 @@ export default function ProjectAccordion({
   children,
   subTask = [],
   marginL = 0,
+  projectId,
 }) {
   const classes = useStyles();
 
@@ -84,7 +85,7 @@ export default function ProjectAccordion({
               <TaskAddingComponent
                 parentId={subTask.taskId}
                 userId={subTask.userId}
-                projectId={subTask.projectId}
+                projectId={projectId}
               >
                 Add Task
               </TaskAddingComponent>

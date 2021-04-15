@@ -12,15 +12,15 @@ import { postUserTaskId } from "../Redux/action";
 
 export default function TaskAddingComponent({
   children,
-  parentId,
+  parentId = 0,
   userId,
-  projectId,
+  projectId = 0,
 }) {
   const [open, setOpen] = React.useState(false);
   const dispatch = useDispatch();
 
   const initTask = {
-    userId: userId,
+    userId: userId || localStorage.getItem("userId"),
     projectId: projectId,
     parentId: parentId,
     taskId: uuid(),
@@ -36,7 +36,7 @@ export default function TaskAddingComponent({
       },
       details: {
         taskName: "",
-        timeSpent: "",
+        timeSpent: 0,
         taskNotes: "",
       },
     },

@@ -54,6 +54,8 @@ export default function AuthRegister() {
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.log.isLoading);
   const initialUser = {
+    userId: uuid(),
+    listOfProjects: [],
     username: "",
     password: "",
     phoneNumber: "",
@@ -65,7 +67,7 @@ export default function AuthRegister() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    setUser({ ...user, userId: uuid(), listOfProjects: [] });
+    // setUser({ ...user, userId: uuid(), listOfProjects: [] });
     console.log(user);
     dispatch(postUserId(user));
   };

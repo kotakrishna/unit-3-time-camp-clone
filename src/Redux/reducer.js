@@ -13,17 +13,15 @@ import {
   GET_USER_TASK_SUCCESS,
   USER_LOGOUT,
 } from "./actionType";
-// import { getLocalStorage, setLocalStorage } from "../Components/LocalStorage";
 
 // const userId =  0;
 // const projects = [];
-// const tasks = getLocalStorage("tasks") || [];
 
 const initial = {
-  isAuth: false,
+  isAuth: false || localStorage.getItem("auth"),
   isLoading: false,
   isError: false,
-  userId: 0,
+  userId: 0 || localStorage.getItem("userId"),
   project: [],
   data: {
     isDataLoading: false,
@@ -34,6 +32,9 @@ const initial = {
 export function reducer(state = initial, { type, payload }) {
   switch (type) {
     case USER_LOGOUT:
+      localStorage.setItem("auth", false);
+      localStorage.setItem("userId", 0);
+      localStorage.clear();
       return {
         ...state,
         isAuth: false,
@@ -45,6 +46,7 @@ export function reducer(state = initial, { type, payload }) {
       };
     case GET_USER_ID_SUCCESS:
       console.log(payload);
+      localStorage.setItem("auth", true);
       return {
         ...state,
         isLoading: false,
@@ -84,7 +86,6 @@ export function reducer(state = initial, { type, payload }) {
       };
     case GET_USER_PROJECT_ID_SUCCESS:
       console.log(payload);
-      // setLocalStorage("projects", payload);
       return {
         ...state,
         project: payload,
