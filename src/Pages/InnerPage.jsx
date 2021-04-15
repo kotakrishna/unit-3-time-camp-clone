@@ -1,22 +1,22 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getUserId, getUserProjectId, getUserTasks } from "../Redux/action";
+import { useSelector } from "react-redux";
+// import { getUserTasks } from "../Redux/action";
 import { Link } from "react-router-dom";
-import ProjectAddingComponent from "../Components/ProjectAddingComponent";
+// import ProjectAddingComponent from "../Components/ProjectAddingComponent";
 import TaskAddingComponent from "../Components/TaskAddingComponent";
 import ProjectAccordion from "../Components/ProjectAccordion";
 
 export default function InnerPage() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const project = useSelector((state) => state.project);
-  const tasks = useSelector((state) => state.data.tasks);
+  const project = useSelector((state) => state.log.project);
+  const tasks = useSelector((state) => state.log.data.tasks);
   console.log(tasks);
-  const handleProject = (i) => {
-    console.log(i);
+  // const handleProject = (i) => {
+  //   console.log(i);
 
-    dispatch(getUserTasks(i));
-  };
+  //   dispatch(getUserTasks(i));
+  // };
   return (
     <div>
       <div>

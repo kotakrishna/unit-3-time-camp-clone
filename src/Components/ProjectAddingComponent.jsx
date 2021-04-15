@@ -25,10 +25,10 @@ export default function ProjectAddingComponent({ children }) {
     let { name, value } = e.target;
     setData({ ...data, [name]: value });
   };
-  const handleSubmitTask = (e) => {
-    // e.preventDefault();
-    console.log(data);
-  };
+  // const handleSubmitTask = (e) => {
+  //   // e.preventDefault();
+  //   console.log(data);
+  // };
   const handleClickOpen = () => {
     setOpen(true);
   };

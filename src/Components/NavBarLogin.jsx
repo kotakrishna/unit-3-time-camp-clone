@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 import { Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { userLogout } from "../Redux/action";
 
 import "../App.css";
@@ -82,8 +82,8 @@ const useStyles = makeStyles((theme) => ({
   // },
 }));
 
-export default function NavBar() {
-  const isAuth = useSelector((state) => state.log.isAuth);
+export default function NavBarLogin() {
+  //   const isAuth = useSelector((state) => state.log.isAuth);
   const classes = useStyles();
   const dispatch = useDispatch();
   const handleLogOut = () => {
@@ -113,7 +113,10 @@ export default function NavBar() {
             </RouterLink>
           </Typography>
           <nav>
-            <RouterLink style={{ color: "black", textDecoration: "none" }}>
+            <RouterLink
+              to="/timesheets"
+              style={{ color: "black", textDecoration: "none" }}
+            >
               <Link
                 // variant="button"
                 color="textPrimary"
@@ -121,7 +124,7 @@ export default function NavBar() {
                 className={classes.link}
                 style={{ textDecoration: "none" }}
               >
-                Features
+                Time Sheets
               </Link>
             </RouterLink>
             <RouterLink style={{ color: "black", textDecoration: "none" }}>
@@ -132,10 +135,13 @@ export default function NavBar() {
                 className={classes.link}
                 style={{ textDecoration: "none" }}
               >
-                Pricing
+                Reports
               </Link>
             </RouterLink>
-            <RouterLink style={{ color: "black", textDecoration: "none" }}>
+            <RouterLink
+              to="/inner-page"
+              style={{ color: "black", textDecoration: "none" }}
+            >
               <Link
                 // variant="button"
                 color="textPrimary"
@@ -143,99 +149,26 @@ export default function NavBar() {
                 className={classes.link}
                 style={{ textDecoration: "none" }}
               >
-                Integration
+                Projects
               </Link>
             </RouterLink>
-            <RouterLink style={{ color: "black", textDecoration: "none" }}>
-              <Link
-                // variant="button"
-                color="textPrimary"
-                href="#"
-                variant="subtitle1"
-                className={classes.link}
-                style={{ textDecoration: "none" }}
-              >
-                Industries
-              </Link>
-            </RouterLink>
-            <RouterLink style={{ color: "black", textDecoration: "none" }}>
-              <Link
-                // variant="button"
-                color="textPrimary"
-                href="#"
-                variant="subtitle1"
-                className={classes.link}
-                style={{ textDecoration: "none" }}
-              >
-                Blog
-              </Link>
-            </RouterLink>
-            <RouterLink style={{ color: "black", textDecoration: "none" }}>
-              <Link
-                // variant="button"
-                color="textPrimary"
-                href="#"
-                variant="subtitle1"
-                className={classes.link}
-                style={{ textDecoration: "none" }}
-              >
-                Book a Demo
-              </Link>
-            </RouterLink>
-            {/* <div> */}
-            {!isAuth && (
-              <RouterLink
-                to="/auth-login"
-                style={{ color: "black", textDecoration: "none" }}
-              >
-                <Link
-                  // variant="button"
-                  color="textPrimary"
-                  href="#"
-                  variant="subtitle1"
-                  className={classes.link}
-                  // style={{ marginLeft: "50px" }}
-                  style={{ textDecoration: "none", marginLeft: "50px" }}
-                >
-                  Log In
-                </Link>
-              </RouterLink>
-            )}
-            {/* </div> */}
           </nav>
-          {!isAuth && (
-            <RouterLink
-              to="/auth-register"
-              style={{ color: "black", textDecoration: "none" }}
+          {/* ( */}
+          <RouterLink
+            to="/auth-login"
+            style={{ color: "black", textDecoration: "none" }}
+          >
+            <Button
+              href="#"
+              color="primary"
+              variant="subtitle1"
+              className={classes.button}
+              style={{ marginLeft: "50px", padding: "13px", width: "230px" }}
+              onClick={handleLogOut}
             >
-              <Button
-                href="#"
-                color="primary"
-                variant="subtitle1"
-                className={classes.button}
-                style={{ marginLeft: "50px", padding: "13px", width: "230px" }}
-              >
-                Sign up-it's free
-              </Button>
-            </RouterLink>
-          )}
-          {isAuth && (
-            <RouterLink
-              to="/auth-login"
-              style={{ color: "black", textDecoration: "none" }}
-            >
-              <Button
-                href="#"
-                color="primary"
-                variant="subtitle1"
-                className={classes.button}
-                style={{ marginLeft: "50px", padding: "13px", width: "230px" }}
-                onClick={handleLogOut}
-              >
-                Log Out
-              </Button>
-            </RouterLink>
-          )}
+              Log Out
+            </Button>
+          </RouterLink>
         </Toolbar>
       </AppBar>
     </React.Fragment>

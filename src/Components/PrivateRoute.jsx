@@ -7,7 +7,7 @@ export default function PrivateRoute({
   redirectPath = "auth-login",
   exact = false,
 }) {
-  const isAuth = useSelector((state) => state.isAuth);
+  const isAuth = useSelector((state) => state.log.isAuth);
   return isAuth ? (
     <Route path={path} exact={exact}>
       {children}
