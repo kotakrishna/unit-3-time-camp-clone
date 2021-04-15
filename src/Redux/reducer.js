@@ -2,6 +2,9 @@ import {
   GET_USER_ID_FAILURE,
   GET_USER_ID_REQUEST,
   GET_USER_ID_SUCCESS,
+  POST_USER_ID_FAILURE,
+  POST_USER_ID_SUCCESS,
+  POST_USER_ID_REQUEST,
   GET_USER_PROJECT_ID_SUCCESS,
   GET_USER_PROJECT_ID_FAILURE,
   GET_USER_PROJECT_ID_REQUEST,
@@ -49,6 +52,26 @@ export function reducer(state = initial, { type, payload }) {
         userId: payload,
       };
     case GET_USER_ID_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+      };
+    case POST_USER_ID_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        isError: false,
+      };
+    case POST_USER_ID_SUCCESS:
+      // console.log(payload);
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        // userId: payload,
+      };
+    case POST_USER_ID_FAILURE:
       return {
         ...state,
         isLoading: false,
