@@ -8,6 +8,7 @@ import {
   GET_USER_TASK_FAILURE,
   GET_USER_TASK_REQUEST,
   GET_USER_TASK_SUCCESS,
+  USER_LOGOUT,
 } from "./actionType";
 // import { getLocalStorage, setLocalStorage } from "../Components/LocalStorage";
 
@@ -29,6 +30,11 @@ const initial = {
 };
 export function reducer(state = initial, { type, payload }) {
   switch (type) {
+    case USER_LOGOUT:
+      return {
+        ...state,
+        isAuth: false,
+      };
     case GET_USER_ID_REQUEST:
       return {
         ...state,
@@ -39,6 +45,7 @@ export function reducer(state = initial, { type, payload }) {
       return {
         ...state,
         isLoading: false,
+        isAuth: true,
         userId: payload,
       };
     case GET_USER_ID_FAILURE:

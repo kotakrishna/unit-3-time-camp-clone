@@ -7,6 +7,7 @@ import NavBar from "../Components/NavBar";
 import Footer from "../Components/Footer";
 import InnerPage from "../Pages/InnerPage";
 import InputTask from "../Pages/InputTask";
+import PrivateRoute from "../Components/PrivateRoute";
 export default function Routes() {
   return (
     <div>
@@ -22,12 +23,12 @@ export default function Routes() {
         <Route path="/auth-register" exact>
           <AuthRegister />
         </Route>
-        <Route path="/inner-page" exact>
+        <PrivateRoute path="/inner-page" exact>
           <InnerPage />
-        </Route>
-        <Route path="/input-page" exact>
+        </PrivateRoute>
+        <PrivateRoute path="/input-page" exact>
           <InputTask />
-        </Route>
+        </PrivateRoute>
       </Switch>
       <Footer />
     </div>
