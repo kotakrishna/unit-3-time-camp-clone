@@ -2,6 +2,9 @@ import {
   GET_USER_ID_FAILURE,
   GET_USER_ID_REQUEST,
   GET_USER_ID_SUCCESS,
+  POST_USER_ID_FAILURE,
+  POST_USER_ID_REQUEST,
+  POST_USER_ID_SUCCESS,
   GET_USER_PROJECT_ID_FAILURE,
   GET_USER_PROJECT_ID_REQUEST,
   GET_USER_PROJECT_ID_SUCCESS,
@@ -38,6 +41,21 @@ export const getUserIdSuccess = (payload) => {
   return {
     type: GET_USER_ID_SUCCESS,
     payload,
+  };
+};
+export const postUserIdRequest = () => {
+  return {
+    type: POST_USER_ID_REQUEST,
+  };
+};
+export const postUserIdFailure = () => {
+  return {
+    type: POST_USER_ID_FAILURE,
+  };
+};
+export const postUserIdSuccess = () => {
+  return {
+    type: POST_USER_ID_SUCCESS,
   };
 };
 export const getUserProjectIdRequest = () => {
@@ -224,6 +242,32 @@ export const postUserTaskId = (payload) => async (dispatch) => {
   } catch (error) {
     console.log(error);
     dispatch(postUserTaskIdFailure());
+  }
+};
+export const postUserId = (payload) => async (dispatch) => {
+  try {
+    dispatch(postUserIdRequest());
+    console.log(payload);
+    await axios
+      .post(
+        `https://json-server-mocker-masai-test.herokuapp.com/users`,
+        payload
+      )
+      .then((res) => {
+        console.log(res);
+        console.log(payload);
+        // console.log(payload);
+        dispatch(postUserIdSuccess());
+        // dispatch(getUserProjectId(payload.userId));
+        // dispatch(getUserProjectId(payload.userId));
+      })
+      .catch((er) => {
+        console.log(er);
+        // dispatch(postUserTaskIdFailure());
+      });
+  } catch (error) {
+    console.log(error);
+    dispatch(postUserIdFailure());
   }
 };
 

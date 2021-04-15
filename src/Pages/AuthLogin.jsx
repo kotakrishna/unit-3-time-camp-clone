@@ -3,7 +3,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
+import { Link } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
@@ -12,6 +12,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserId } from "../Redux/action";
 import { Redirect } from "react-router-dom";
+import LoadingSign from "../Components/LoadingSign";
 // export default function AuthLogin() {
 //   // const isAuth = useSelector((state) => state.isAuth);
 
@@ -102,6 +103,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AuthLogin() {
   const isAuth = useSelector((state) => state.log.isAuth);
+  const isLoading = useSelector((state) => state.log.isLoading);
   React.useEffect(() => {
     console.log(isAuth);
   }, [isAuth]);
@@ -122,7 +124,9 @@ export default function AuthLogin() {
   };
   const classes = useStyles();
 
-  return !isAuth ? (
+  return isLoading ? (
+    <LoadingSign />
+  ) : !isAuth ? (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={3} className={classes.image} />
@@ -218,13 +222,8 @@ export default function AuthLogin() {
               Log In
             </Button>
             <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link to="/auth-register">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
