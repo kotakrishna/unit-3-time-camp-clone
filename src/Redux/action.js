@@ -14,6 +14,7 @@ import {
   POST_USER_TASK_ID_FAILURE,
   POST_USER_TASK_ID_REQUEST,
   POST_USER_TASK_ID_SUCCESS,
+  USER_LOGOUT,
 } from "./actionType";
 import axios from "axios";
 // import { getLocalStorage, setLocalStorage } from "../Components/LocalStorage";
@@ -105,19 +106,33 @@ export const getTaskSuccess = (payload) => {
   };
 };
 
+export const userLogout = () => {
+  return {
+    type: USER_LOGOUT,
+  };
+};
 export const getUserId = (payload) => async (dispatch) => {
+  console.log(payload);
   try {
     dispatch(getUserIdRequest());
     await axios
       .get(
-        `https://json-server-mocker-masai-test.herokuapp.com/users?username=${payload}`
+        `https://json-server-mocker-masai-test.herokuapp.com/users?username=${payload.username}`
       )
       .then((res) => {
         // console.log(res.data);
         // console.log(res.data[0].userId);
         // setLocalStorage("userId", res.data[0].userId);
-        dispatch(getUserIdSuccess(res.data[0].userId));
-        dispatch(getUserProjectId(res.data[0].userId));
+        if (
+          res.data[0].username === payload.username &&
+          res.data[0].password === payload.password
+        ) {
+          console.log(res.data[0].userId);
+          dispatch(getUserIdSuccess(res.data[0].userId));
+          dispatch(getUserProjectId(res.data[0].userId));
+        } else {
+          console.log(res);
+        }
       })
       .catch((er) => {
         console.log(er);
