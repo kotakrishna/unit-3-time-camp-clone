@@ -29,14 +29,14 @@ export function TimeSheetTask({data}){
               
                 startTimer:true,
                 stopTimer:false,
-                startTime:moment().format('LTS'),
+                startTime:new Date(),
                 stopTime:"",
                 taskName: data.data.details.taskName,
                 taskNotes: data.data.details.taskNotes
                 
                
             }
-            let timeSpent = 0
+            let timeSpent = Number(data.data.details.timeSpent)
             dispatch(updateTasks(params,data.id, timeSpent))
             
         } 
@@ -47,14 +47,12 @@ export function TimeSheetTask({data}){
                     startTimer:false,
                     stopTimer:true,
                     startTime:data.data.time.startTime,
-                    stopTime:moment().format('LTS'),
+                    stopTime:new Date(),
                     taskName: data.data.details.taskName,
                     taskNotes: data.data.details.taskNotes,
                     
                 }
-                let timeStart = moment(params.startTime, "hh:mm:ss")
-                let timeStop = moment(params.stopTime,"hh:mm:ss")
-                let timeSpent = timeStart.subtract(timeStop)
+                let timeSpent = Number(data.data.details.timeSpent) + (new Date(params.stopTime) - new Date(params.startTime))
                 dispatch(updateTasks(params,data.id, timeSpent))
             } else {
                 const params = {
@@ -62,12 +60,12 @@ export function TimeSheetTask({data}){
                     startTimer:false,
                     stopTimer:true,
                     startTime:data.data.time.startTime,
-                    stopTime:moment().format('LTS'),
+                    stopTime:new Date(),
                     taskName: data.data.details.taskName,
                     taskNotes: data.data.details.taskNotes,
                     
                 }
-                let timeSpent = 0
+                let timeSpent = Number(data.data.details.timeSpent)
                 dispatch(updateTasks(params,data.id, timeSpent))
             }
             
@@ -97,7 +95,7 @@ export function TimeSheetTask({data}){
                     </Div>
                 </div>
 
-                <Div className={styles.duration}>0h 00m</Div>
+                <Div className={styles.duration}>{data.data.details.timeSpent}</Div>
 
                 <StartStopButton onClick={handleStartAndStop} style={{display:"flex",alignItems:"center",justifyContent:"center",width:35, height:35}}>
                     {

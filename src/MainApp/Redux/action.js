@@ -75,7 +75,7 @@ export const updateTasks = (params, id, timeS) => dispatch =>{
                 },
                 details: {
                   taskName: params.taskName,
-                  timeSpent:timeS,
+                  timeSpent:Math.floor(timeS/1000),
                   taskNotes: params.taskNotes
                 }
               }
