@@ -8,6 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 import { Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import { useSelector, useDispatch } from "react-redux";
+import { userLogout } from "../Redux/action";
 
 import "../App.css";
 const useStyles = makeStyles((theme) => ({
@@ -81,7 +83,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function NavBar() {
+  const isAuth = useSelector((state) => state.isAuth);
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const handleLogOut = () => {
+    dispatch(userLogout());
+  };
 
   return (
     <React.Fragment>
@@ -176,38 +183,59 @@ export default function NavBar() {
               </Link>
             </RouterLink>
             {/* <div> */}
+            {!isAuth && (
+              <RouterLink
+                to="/auth-login"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                <Link
+                  // variant="button"
+                  color="textPrimary"
+                  href="#"
+                  variant="subtitle1"
+                  className={classes.link}
+                  // style={{ marginLeft: "50px" }}
+                  style={{ textDecoration: "none", marginLeft: "50px" }}
+                >
+                  Log In
+                </Link>
+              </RouterLink>
+            )}
+            {/* </div> */}
+          </nav>
+          {!isAuth && (
+            <RouterLink
+              to="/auth-register"
+              style={{ color: "black", textDecoration: "none" }}
+            >
+              <Button
+                href="#"
+                color="primary"
+                variant="subtitle1"
+                className={classes.button}
+                style={{ marginLeft: "50px", padding: "13px", width: "230px" }}
+              >
+                Sign up-it's free
+              </Button>
+            </RouterLink>
+          )}
+          {isAuth && (
             <RouterLink
               to="/auth-login"
               style={{ color: "black", textDecoration: "none" }}
             >
-              <Link
-                // variant="button"
-                color="textPrimary"
+              <Button
                 href="#"
+                color="primary"
                 variant="subtitle1"
-                className={classes.link}
-                // style={{ marginLeft: "50px" }}
-                style={{ textDecoration: "none", marginLeft: "50px" }}
+                className={classes.button}
+                style={{ marginLeft: "50px", padding: "13px", width: "230px" }}
+                onClick={handleLogOut}
               >
-                Log In
-              </Link>
+                Log Out
+              </Button>
             </RouterLink>
-            {/* </div> */}
-          </nav>
-          <RouterLink
-            to="/auth-register"
-            style={{ color: "black", textDecoration: "none" }}
-          >
-            <Button
-              href="#"
-              color="primary"
-              variant="subtitle1"
-              className={classes.button}
-              style={{ marginLeft: "50px", padding: "13px", width: "230px" }}
-            >
-              Sign up-it's free
-            </Button>
-          </RouterLink>
+          )}
         </Toolbar>
       </AppBar>
     </React.Fragment>
