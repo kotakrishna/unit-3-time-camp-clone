@@ -117,7 +117,7 @@ export function TimeSheetTask({data}){
                     </Div>
                 </div>
 
-                <Div className={styles.duration}>{data.data.details.timeSpent}</Div>
+                <Div className={styles.duration}>{moment.utc(data.data.details.timeSpent*1000).format('HH:mm:ss')}</Div>
 
                 <StartStopButton onClick={handleStartAndStop} style={{display:"flex",alignItems:"center",justifyContent:"center",width:35, height:35}}>
                     {
