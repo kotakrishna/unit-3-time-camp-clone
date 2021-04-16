@@ -5,18 +5,25 @@ import { Link } from "react-router-dom";
 // import ProjectAddingComponent from "../Components/ProjectAddingComponent";
 import TaskAddingComponent from "../Components/TaskAddingComponent";
 import ProjectAccordion from "../Components/ProjectAccordion";
+import { useDispatch } from "react-redux";
+import { getUserProjectId, getUserTasksUserId } from "../Redux/action";
 
 export default function InnerPage() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const project = useSelector((state) => state.log.project);
   const tasks = useSelector((state) => state.log.data.tasks);
   console.log(tasks);
+  const userId = localStorage.getItem("userId");
   // const handleProject = (i) => {
   //   console.log(i);
+  React.useEffect(() => {
+    console.log(project);
+    // dispatch(get)
+    dispatch(getUserProjectId(userId));
+    // dispatch(getUserTasksUserId(userId));
+  }, []);
 
-  //   dispatch(getUserTasks(i));
-  // };
   return (
     <div>
       <div>
@@ -30,7 +37,7 @@ export default function InnerPage() {
       <div>
         {project.map((i) => (
           <div
-            key={i.taskId}
+            key={i.projectId}
             // style={{
             //   border: "1px solid black",
             //   width: "1000px",
@@ -40,6 +47,7 @@ export default function InnerPage() {
             // }}
           >
             <ProjectAccordion
+              projectId={i.projectId}
               subTask={tasks?.filter((task) => task.projectId === i.projectId)}
             >
               {i.projectName}
