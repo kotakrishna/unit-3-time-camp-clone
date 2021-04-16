@@ -7,7 +7,8 @@ import TaskAddingComponent from "../Components/TaskAddingComponent";
 import ProjectAccordion from "../Components/ProjectAccordion";
 import "./InnerPage.css"
 import { useDispatch } from "react-redux";
-import { getUserProjectId, getUserTasksUserId } from "../Redux/action";
+import SearchProject from '../Components/SearchProject'
+import { getUserProjectId } from "../Redux/action";
 
 export default function InnerPage() {
   const dispatch = useDispatch();
@@ -30,8 +31,9 @@ export default function InnerPage() {
       <div className="project_page">
         <h3 className="inner_page">Projects</h3>
         <div className="project_page">
+        {/* <input className="input"  placeholder="Search"/> */}
+          <SearchProject style={{flex:1}} />
         <Link style={{ textDecoration: "none" }} to="/input-page">
-        <input className="input"  placeholder="Search"/>
           <button  className="add_project">
             Add Project or Task
           </button>
