@@ -1,12 +1,20 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { getTasks, updateTasks } from '../Redux/action';
+import { getTasks, updateTasks, setStart, setStop } from '../Redux/action';
 import * as moment from 'moment'
 import styles from './TimeSheets.module.css'
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import TimeInputPolyfill from 'react-time-input-polyfill'
+import { loaddata } from '../../taskUtil/taskLocalStorage';
 
 export function TimeSheetTask({data}){
     const [state, setState] = React.useState(false)
+    const [startCheck, setStartCheck] = React.useState(false)
+
+    const [manualStrTime,setManualStrTime] = React.useState('18:00')
+    const [manualStpTime,setManualStpTime] = React.useState('18:00')
+    const tasks = useSelector(state=>state.appRed.tasks)
     const dispatch = useDispatch()
 
     const Div = styled.div`
@@ -22,55 +30,69 @@ export function TimeSheetTask({data}){
             border-radius:5px;
         }
     `;
+    // React.useEffect(()=>{
+        
+    // },[manualStpTime])
+    
     const handleStartAndStop = () => {
-        setState(!state)
-        if(!state){
-            const params = {
-              
-                startTimer:true,
-                stopTimer:false,
-                startTime:new Date(),
-                stopTime:"",
-                taskName: data.data.details.taskName,
-                taskNotes: data.data.details.taskNotes
-                
-               
+        tasks?.forEach(item=>{
+            if(item.data.timer.startTimer){
+                setStartCheck(true)
             }
-            let timeSpent = Number(data.data.details.timeSpent)
-            dispatch(updateTasks(params,data.id, timeSpent))
-            
-        } 
-        else if(state){
-            if(data.data.time.startTime!==""){
+        })
+        if(true){
+            if(!data.data.timer.startTimer){
                 const params = {
-               
-                    startTimer:false,
-                    stopTimer:true,
-                    startTime:data.data.time.startTime,
-                    stopTime:new Date(),
+                
+                    startTimer:true,
+                    stopTimer:false,
+                    startTime:new Date(),
+                    stopTime:"",
                     taskName: data.data.details.taskName,
-                    taskNotes: data.data.details.taskNotes,
+                    taskNotes: data.data.details.taskNotes
                     
-                }
-                let timeSpent = Number(data.data.details.timeSpent) + (new Date(params.stopTime) - new Date(params.startTime))
-                dispatch(updateTasks(params,data.id, timeSpent))
-            } else {
-                const params = {
-            
-                    startTimer:false,
-                    stopTimer:true,
-                    startTime:data.data.time.startTime,
-                    stopTime:new Date(),
-                    taskName: data.data.details.taskName,
-                    taskNotes: data.data.details.taskNotes,
-                    
+                
                 }
                 let timeSpent = Number(data.data.details.timeSpent)
-                dispatch(updateTasks(params,data.id, timeSpent))
+                console.log(timeSpent)
+                dispatch(updateTasks(params,data.id, timeSpent, loaddata("userId")))
+                
+            } 
+            else if(data.data.timer.startTimer){
+                if(data.data.time.startTime!==""){
+                    const params = {
+                
+                        startTimer:false,
+                        stopTimer:true,
+                        startTime:data.data.time.startTime,
+                        stopTime:new Date(),
+                        taskName: data.data.details.taskName,
+                        taskNotes: data.data.details.taskNotes,
+                        
+                    }
+                    let timeSpent = Number(data.data.details.timeSpent) + (new Date(params.stopTime) - new Date(params.startTime))
+                    console.log(timeSpent)
+                    dispatch(updateTasks(params,data.id, timeSpent, loaddata("userId")))
+                } else {
+                    const params = {
+                
+                        startTimer:false,
+                        stopTimer:true,
+                        startTime:data.data.time.startTime,
+                        stopTime:new Date(),
+                        taskName: data.data.details.taskName,
+                        taskNotes: data.data.details.taskNotes,
+                        
+                    }
+                    let timeSpent = Number(data.data.details.timeSpent)
+                    console.log(timeSpent)
+                    dispatch(updateTasks(params,data.id, timeSpent, loaddata("userId")))
+                }
+                
+                
             }
-            
-            
-        }
+        } 
+        
     }
 
     const randomColor = () => {
@@ -87,19 +109,19 @@ export function TimeSheetTask({data}){
                 <Div className={styles.note} style={{width:200}}>note</Div>
                 <div style={{display:"flex",justifyContent:"space-around",width:200, alignItems:"center"}}>
                     <Div className={styles.timer}>
-                        <input type="time"/>
+                        <TimeInputPolyfill name = "strTime" value = {manualStrTime} onChange={({value, element})=>setManualStrTime(value)}/>
                     </Div>
                     <div style={{fontSize:20}}>-</div>
                     <Div className={styles.timer}>
-                        <input type="time" placeholder={moment().format('LT')}/>
+                        <TimeInputPolyfill name = "stpTime" value = {manualStpTime} onChange={({value, element})=>setManualStpTime(value)}/>
                     </Div>
                 </div>
 
-                <Div className={styles.duration}>{data.data.details.timeSpent}</Div>
+                <Div className={styles.duration}>{moment.utc(data.data.details.timeSpent*1000).format('HH:mm:ss')}</Div>
 
                 <StartStopButton onClick={handleStartAndStop} style={{display:"flex",alignItems:"center",justifyContent:"center",width:35, height:35}}>
                     {
-                        !state ? <div className={styles.start}></div> :
+                        !data.data.timer.startTimer ? <div className={styles.start}></div> :
                         <div className={styles.stop}>
                             <div></div>
                         </div>
