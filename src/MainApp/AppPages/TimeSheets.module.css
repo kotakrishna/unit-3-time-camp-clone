@@ -158,7 +158,7 @@
 .timer{
     padding:0 10px;
 }
-.timer>input{
+.timeInp{
     border: none;
     outline: none;
     height:40px!important;
