@@ -5,6 +5,7 @@ import { v4 as uuid } from "uuid";
 import TaskAddingComponent from "../Components/TaskAddingComponent";
 import ProjectAddingComponent from "../Components/ProjectAddingComponent";
 import { deleteTask } from "../Redux/action";
+// import {TaskAddingComponent} from "../Components/TaskAddingComponent";
 
 export default function InputTask() {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ export default function InputTask() {
       },
       details: {
         taskName: "",
-        timeSpent: "",
+        timeSpent: 0,
         taskNotes: "",
       },
     },
@@ -65,7 +66,7 @@ export default function InputTask() {
   };
   return (
     <div>
-      <form action="" onSubmit={handleSubmitProject}>
+      {/* <form action="" onSubmit={handleSubmitProject}>
         <div>
           <h1>Project Enter</h1>
           <label htmlFor="">
@@ -94,10 +95,12 @@ export default function InputTask() {
         <div>
           <input type="submit" value="Submit" name="" id="" />
         </div>
-      </form>
+      </form> */}
       <div>
-        <h1>Add Task</h1>
-        <div>
+        <h1>
+          <TaskAddingComponent>Add Task</TaskAddingComponent>
+        </h1>
+        {/* <div>
           <form action="" onSubmit={handleSubmitTask}>
             <div>
               <label htmlFor="">
@@ -127,7 +130,7 @@ export default function InputTask() {
               <input type="submit" value="Submit" name="" id="" />
             </div>
           </form>
-        </div>
+        </div> */}
       </div>
       <div>
         <ProjectAddingComponent>Add Project</ProjectAddingComponent>

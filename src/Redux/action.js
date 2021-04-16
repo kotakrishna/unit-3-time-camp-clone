@@ -320,16 +320,20 @@ export const getUserTasksUserId = (payload) => async (dispatch) => {
 
 export const deleteTask = async () => {
   try {
-    await axios
-      .delete(
-        "https://json-server-mocker-masai-test.herokuapp.com/tasks",
-        {
-          data: {
-            taskId: "a94c2ae8-4ee5-409d-88db-e497a01758fc",
-          },
-        }
-        // "taskId=a94c2ae8-4ee5-409d-88db-e497a01758fc"
-      )
+    await axios({
+      method: "DELETE",
+      url:
+        "https://json-server-mocker-masai-test.herokuapp.com/tasks?taskId=a94c2ae8-4ee5-409d-88db-e497a01758fc",
+    })
+      // .delete(
+      //   "https://json-server-mocker-masai-test.herokuapp.com/tasks",
+      //   {
+      //     params: {
+      //       taskId: "a94c2ae8-4ee5-409d-88db-e497a01758fc",
+      //     },
+      //   }
+      //   // "a94c2ae8-4ee5-409d-88db-e497a01758fc"
+      // )
       .then((res) => {
         console.log(res);
       })
