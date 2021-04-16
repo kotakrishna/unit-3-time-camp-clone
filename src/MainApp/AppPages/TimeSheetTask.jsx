@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import TimeInputPolyfill from 'react-time-input-polyfill'
 import { loaddata } from '../../taskUtil/taskLocalStorage';
+import { TimeInput } from './TimeInput';
 
 export function TimeSheetTask({data}){
     const [state, setState] = React.useState(false)
@@ -109,11 +110,11 @@ export function TimeSheetTask({data}){
                 <Div className={styles.note} style={{width:200}}>note</Div>
                 <div style={{display:"flex",justifyContent:"space-around",width:200, alignItems:"center"}}>
                     <Div className={styles.timer}>
-                        <TimeInputPolyfill name = "strTime" value = {manualStrTime} onChange={({value, element})=>setManualStrTime(value)}/>
+                        <TimeInput currentValue = {manualStrTime} onInputChange = {newVal=>setManualStrTime(newVal)}/>
                     </Div>
                     <div style={{fontSize:20}}>-</div>
                     <Div className={styles.timer}>
-                        <TimeInputPolyfill name = "stpTime" value = {manualStpTime} onChange={({value, element})=>setManualStpTime(value)}/>
+                        <TimeInput currentValue = {manualStpTime} onInputChange = {newVal=>setManualStpTime(newVal)}/>  
                     </Div>
                 </div>
 
