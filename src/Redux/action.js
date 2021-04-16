@@ -272,27 +272,28 @@ export const postUserId = (payload) => async (dispatch) => {
 // const dispatch = useDispatch()
 // dispatch(getUserTasks(projId))
 
-// export const getUserTasks = (payload) => async (dispatch) => {
-//   try {
-//     dispatch(getTaskRequest());
-//     console.log(payload);
-//     await axios
-//       .get(
-//         `https://json-server-mocker-masai-test.herokuapp.com/tasks?projectId=${payload}`
-//       )
-//       .then((res) => {
-//         console.log(res);
-//         dispatch(getTaskSuccess(res.data));
-//       })
-//       .catch((er) => {
-//         console.log(er);
-//         dispatch(getTaskFailure());
-//       });
-//   } catch (error) {
-//     console.log(error);
-//     dispatch(getTaskFailure());
-//   }
-// };
+export const getUserTasks = (payload) => async (dispatch) => {
+  try {
+    dispatch(getTaskRequest());
+    console.log(payload);
+    await axios
+      .get(
+        `https://json-server-mocker-masai-test.herokuapp.com/tasks?projectId=${payload}`
+      )
+      .then((res) => {
+        console.log(res);
+        dispatch(getTaskSuccess(res.data));
+        
+      })
+      .catch((er) => {
+        console.log(er);
+        dispatch(getTaskFailure());
+      });
+  } catch (error) {
+    console.log(error);
+    dispatch(getTaskFailure());
+  }
+};
 export const getUserTasksUserId = (payload) => async (dispatch) => {
   try {
     dispatch(getTaskRequest());
@@ -318,29 +319,29 @@ export const getUserTasksUserId = (payload) => async (dispatch) => {
   }
 };
 
-export const deleteTask = async () => {
-  try {
-    await axios({
-      method: "DELETE",
-      url:
-        "https://json-server-mocker-masai-test.herokuapp.com/tasks?taskId=a94c2ae8-4ee5-409d-88db-e497a01758fc",
-    })
-      // .delete(
-      //   "https://json-server-mocker-masai-test.herokuapp.com/tasks",
-      //   {
-      //     params: {
-      //       taskId: "a94c2ae8-4ee5-409d-88db-e497a01758fc",
-      //     },
-      //   }
-      //   // "a94c2ae8-4ee5-409d-88db-e497a01758fc"
-      // )
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((er) => {
-        console.log(er);
-      });
-  } catch (error) {
-    console.log(error);
-  }
-};
+// export const deleteTask = async () => {
+//   try {
+//     await axios({
+//       method: "DELETE",
+//       url:
+//         "https://json-server-mocker-masai-test.herokuapp.com/tasks?taskId=a94c2ae8-4ee5-409d-88db-e497a01758fc",
+//     })
+//       // .delete(
+//       //   "https://json-server-mocker-masai-test.herokuapp.com/tasks",
+//       //   {
+//       //     params: {
+//       //       taskId: "a94c2ae8-4ee5-409d-88db-e497a01758fc",
+//       //     },
+//       //   }
+//       //   // "a94c2ae8-4ee5-409d-88db-e497a01758fc"
+//       // )
+//       .then((res) => {
+//         console.log(res);
+//       })
+//       .catch((er) => {
+//         console.log(er);
+//       });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
