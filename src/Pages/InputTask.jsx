@@ -3,6 +3,8 @@ import { postUserProjectId, postUserTaskId } from "../Redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuid } from "uuid";
 import TaskAddingComponent from "../Components/TaskAddingComponent";
+import "./InputTask.css"
+// import { getLocalStorage } from "../Components/LocalStorage";
 import ProjectAddingComponent from "../Components/ProjectAddingComponent";
 import { deleteTask } from "../Redux/action";
 // import {TaskAddingComponent} from "../Components/TaskAddingComponent";
@@ -68,6 +70,9 @@ export default function InputTask() {
     <div>
       {/* <form action="" onSubmit={handleSubmitProject}>
         <div>
+    <div className="data">
+      <form action="" onSubmit={handleSubmitProject}>
+        <div className="project_details">
           <h1>Project Enter</h1>
           <label htmlFor="">
             Project Name:
