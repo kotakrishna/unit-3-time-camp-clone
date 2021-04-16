@@ -1,0 +1,6 @@
+.data{
+    border: 1px solid red;
+}
+.project_details > label{
+    display: flex;
+}

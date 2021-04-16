@@ -60,5 +60,5 @@ function Chatbot (){
     )
   }
 
-export default Chatbot;
+export { Chatbot};
 

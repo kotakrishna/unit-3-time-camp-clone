@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 // import ProjectAddingComponent from "../Components/ProjectAddingComponent";
 import TaskAddingComponent from "../Components/TaskAddingComponent";
 import ProjectAccordion from "../Components/ProjectAccordion";
-
+import "./InnerPage.css"
 export default function InnerPage() {
   // const dispatch = useDispatch();
 
@@ -18,14 +18,23 @@ export default function InnerPage() {
   //   dispatch(getUserTasks(i));
   // };
   return (
-    <div>
-      <div>
-        <h1>Inner Page</h1>
+    <div className="project_main">
+      <div className="project_page">
+        <h3 className="inner_page">Projects</h3>
+        <div className="project_page">
         <Link style={{ textDecoration: "none" }} to="/input-page">
-          <button>
-            <h3>Add Project or Task</h3>
+        <input className="input"  placeholder="Search"/>
+          <button  className="add_project">
+            Add Project or Task
+          </button>
+          <button  className="add_project">
+            Filter
+          </button>
+          <button className="add_project">
+            Archieved
           </button>
         </Link>
+        </div>
       </div>
       <div>
         {project.map((i) => (

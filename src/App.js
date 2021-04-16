@@ -1,11 +1,11 @@
 import "./App.css";
 import Routes from "./Routes/Routes";
-import ChatBot from "./Components/Chatbot"
+import {Chatbot} from "./Components/Chatbot"
 function App() {
   return (
     <div className="App">
       
-      <Routes />
+      <Routes/>
       <Chatbot/>
     </div>
   );
