@@ -1,0 +1,360 @@
+.image{
+    width: 100%;
+    background-image: url('https://www.worthidea.com/wp-content/uploads/2015/02/BUSINESS-2.jpg');
+  }
+  .left_box{
+    margin-top: -400px;
+    background-color:blue;
+    text-align: left;
+    border: 1px solid red;
+    height: 200px
+  
+  }
+  
+  section#top.backgroundTop {
+    background-image: url("https://cdn-m.timecamp.com/img/backgroundTop.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  section#top {
+    padding: 6rem 0 2rem;
+  }
+  rticle, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
+    display: block;
+  }
+  *, *::before, *::after {
+    box-sizing: inherit;
+  }
+  section {
+    display: block;
+  }
+  body {
+    overflow-x: hidden;
+    font-weight: 300;
+    position: relative;
+    font-family: nunito sans,sans-serif;
+    background-color: #fff;
+    color: #1b1b20;
+  }
+  *, *::before, *::after {
+    box-sizing: inherit;
+  }
+  .col-lg-6 col-md-6 col-sm-12 left{
+    background-color: #ffffff;
+    height: 624;
+    width: 570;
+    padding: 48px 48px 48px 48px;
+  
+  }
+  
+ 
+ 
+  section#top>.container>.row h1.seoHeader {
+      font-family: nunito sans,sans-serif;
+      color: #1b1b20;
+      font-size: 14px;
+      font-weight: 700;
+  }
+  @media (min-width: 768px) and (max-width: 1023px){
+ 
+  section#top>.container>.row h1, section#top>.container>.row h2.subheader {
+      font-size: 46px;
+  }
+  
+  section#top>.container>.row h1, section#top>.container>.row h2.subheader {
+      font-weight: 800;
+      color: #1b1b20;
+      font-size: 50px;
+      line-height: 1.1;
+      width: 93%;
+      margin-right: auto;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+      letter-spacing: 0;
+      cursor: default;
+      font-family: lato,sans-serif;
+  }
+  
+  h1, .h1 {
+      font-size: 2.5rem;
+  }
+  
+  h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+      margin-bottom: .5rem;
+      font-family: inherit;
+      font-weight: 500;
+      line-height: 1.1;
+      color: inherit;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+      margin-top: 0;
+      margin-bottom: .5rem;
+  }
+  
+  *, *::before, *::after {
+      box-sizing: inherit;
+  }
+  user agent stylesheet
+  :-webkit-any(article, aside, nav, section) h1 {
+      font-size: 1.5em;
+      margin-block-start: 0.83em;
+      margin-block-end: 0.83em;
+  }
+  user agent stylesheet
+  h1 {
+      display: block;
+      font-size: 2em;
+      margin-block-start: 0.67em;
+      margin-block-end: 0.67em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      font-weight: bold;
+  }
+}
+  
+  body {
+      overflow-x: hidden;
+      font-weight: 300;
+      position: relative;
+      font-family: nunito sans,sans-serif;
+      background-color: #fff;
+      color: #1b1b20;
+  }
+  
+  body {
+      margin: 0;
+      font-family: -apple-system,BlinkMacSystemFont,segoe ui,Roboto,helvetica neue,Arial,sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #212529;
+      background-color: #fff;
+  }
+  
+  html {
+      quotes: "“" "”";
+      -webkit-font-smoothing: antialiased;
+  }
+  
+  html {
+      box-sizing: border-box;
+      font-family: sans-serif;
+      line-height: 1.15;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+      -ms-overflow-style: scrollbar;
+      -webkit-tap-highlight-color: transparent;
+  }
+  
+  *, *::before, *::after {
+      box-sizing: inherit;
+  }
+  
+  *, *::before, *::after {
+      box-sizing: inherit;
+  }
+  #top{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    quotes: "“" "”";
+    -webkit-font-smoothing: antialiased;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 300;
+    font-family: nunito sans,sans-serif;
+    color: #1b1b20;
+    box-sizing: inherit;
+    display: block;
+    padding: 6rem 0 2rem;
+ 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  
+  
+  }
+  #top > div{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    quotes: "“" "”";
+    -webkit-font-smoothing: antialiased;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 300;
+    font-family: nunito sans,sans-serif;
+    color: #1b1b20;
+    box-sizing: inherit;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 100%;
+    max-width: 90%;
+  }
+  #top > div > div{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    quotes: "“" "”";
+    -webkit-font-smoothing: antialiased;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 300;
+    font-family: nunito sans,sans-serif;
+    color: #1b1b20;
+    box-sizing: inherit;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    justify-content: center;
+  }
+  #top > div > div > div.col-lg-6.col-md-6.col-sm-12.left{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    quotes: "“" "”";
+    -webkit-font-smoothing: antialiased;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 300;
+    font-family: nunito sans,sans-serif;
+    color: #1b1b20;
+    box-sizing: inherit;
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 3rem;
+    border-radius: 6px;
+ 
+    background-color: rgba(255,255,255,.9);
+  }
+  #top > div > div > div.col-lg-6.col-md-6.col-sm-12.left > h1{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    quotes: "“" "”";
+    -webkit-font-smoothing: antialiased;
+    box-sizing: inherit;
+    margin-top: 0;
+    margin-bottom: .5rem;
+    letter-spacing: 0;
+    cursor: default;
+    line-height: 1.1;
+    width: 93%;
+    margin-right: auto;
+    font-family: nunito sans,sans-serif;
+    color: #1b1b20;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  #top > div > div > div.col-lg-6.col-md-6.col-sm-12.left > h2{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    quotes: "“" "”";
+    -webkit-font-smoothing: antialiased;
+    box-sizing: inherit;
+    margin-bottom: .5rem;
+    letter-spacing: 0;
+    cursor: default;
+    font-family: lato,sans-serif;
+    margin-top: 20px;
+    font-weight: 800;
+    color: #1b1b20;
+    line-height: 1.1;
+    width: 93%;
+    margin-right: auto;
+    font-size: 46px;
+  }
+  #top > div > div > div.col-lg-6.col-md-6.col-sm-12.left > p{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    quotes: "“" "”";
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    font-weight: 300;
+    box-sizing: inherit;
+    font-family: nunito sans,sans-serif;
+    font-size: 20px;
+    color: #1b1b20;
+    margin: 2rem 0;
+    margin-right: auto;
+    width: 100%;
+  }
+  #top > div > div > div.col-lg-6.col-md-6.col-sm-12.left > div{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    quotes: "“" "”";
+    -webkit-font-smoothing: antialiased;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 300;
+    font-family: nunito sans,sans-serif;
+    color: #1b1b20;
+    box-sizing: inherit;
+  }
+  #top > div > div > div.col-lg-6.col-md-6.ue-hero-main.display{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    quotes: "“" "”";
+    -webkit-font-smoothing: antialiased;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 300;
+    font-family: nunito sans,sans-serif;
+    color: #1b1b20;
+    box-sizing: inherit;
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-top: 17rem;
+    margin-bottom: 3rem;
+    backdrop-filter: blur(3px);
+    background-color: rgba(255,255,255,.9);
+    border-radius: 6px;
+    animation: fade 3s ease-out;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    left: 1rem;
+  }
+  #top > div > div{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    quotes: "“" "”";
+    -webkit-font-smoothing: antialiased;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 300;
+    font-family: nunito sans,sans-serif;
+    color: #1b1b20;
+    box-sizing: inherit;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    justify-content: center;
+  }
+  .btn-filled {
+    background-color: #008A51;
+    padding:10px;
+    border-radius: 15px;
+    width: 80%;
+    margin: auto;
+    color: white;
+    font-size: 25px;
+
+  }
+  .inp{
+      padding: 15px;
+      width: 80%;
+      margin: auto;
+      border-radius: 5px;
+  }
