@@ -4,11 +4,24 @@ import { GET_TASK_FAILURE,
     GET_TASK_SUCCESS,
     UPDATE_TASK_SUCCESS,
     UPDATE_TASK_REQ,
-    UPDATE_TASK_FAILURE
+    UPDATE_TASK_FAILURE,
+    IS_START,
+    IS_STOP
 } from './actionTypes';
 import axios from "axios"
 
-
+export function setStart(payload){
+    return {
+        type:IS_START,
+        payload
+    }
+}
+export function setStop(payload){
+    return {
+        type:IS_STOP,
+        payload
+    }
+}
 export function getTaskReq(){
     return {
         type:GET_TASK_REQ
@@ -43,11 +56,11 @@ export function updateTaskFailure(){
     }
 }
 
-export const getTasks = (params) => dispatch =>{
+export const getTasks = (userId) => dispatch =>{
     const reqAct = getTaskReq()
     dispatch(reqAct)
     return axios
-        .get('https://json-server-mocker-masai-test.herokuapp.com/tasks')
+        .get(`https://json-server-mocker-masai-test.herokuapp.com/tasks?userId=${userId}`)
         .then(res=>{
             const sucAct = getTaskSuccess(res.data)
             dispatch(sucAct)
@@ -58,7 +71,7 @@ export const getTasks = (params) => dispatch =>{
         })
 }
 
-export const updateTasks = (params, id, timeS) => dispatch =>{
+export const updateTasks = (params, id, timeS,userId) => dispatch =>{
     const reqAct = updateTaskReq()
     dispatch(reqAct)
     return axios
@@ -83,7 +96,7 @@ export const updateTasks = (params, id, timeS) => dispatch =>{
         .then(res=>{
             const sucAct = updateTaskSuccess()
             dispatch(sucAct)
-            dispatch(getTasks())
+            dispatch(getTasks(userId))
         })
         .catch(res=>{
             const failAct = updateTaskFailure()

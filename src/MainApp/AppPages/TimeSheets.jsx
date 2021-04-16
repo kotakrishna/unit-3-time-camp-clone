@@ -7,6 +7,7 @@ import { TimeSheetTask } from './TimeSheetTask';
 import styles from './TimeSheets.module.css'
 import styled from 'styled-components';
 import moment from 'moment';
+import { loaddata } from '../../taskUtil/taskLocalStorage';
 export function TimeSheets(){
     const tasks = useSelector(state=>state.appRed.tasks)
     const dispatch = useDispatch()
@@ -37,7 +38,7 @@ export function TimeSheets(){
     }
 `;
     React.useEffect(()=>{
-        dispatch(getTasks())
+        dispatch(getTasks(loaddata("userId")))
     },[])
     return (
         <div>
