@@ -5,12 +5,13 @@ import { v4 as uuid } from "uuid";
 import TaskAddingComponent from "../Components/TaskAddingComponent";
 import "./InputTask.css"
 // import { getLocalStorage } from "../Components/LocalStorage";
+import ProjectAddingComponent from "../Components/ProjectAddingComponent";
+import { deleteTask } from "../Redux/action";
+
 export default function InputTask() {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.log.userId);
-  // || getLocalStorage("userId");
   const tasks = useSelector((state) => state.log.data.tasks);
-  //  || getLocalStorage("tasks");
 
   const initProject = {
     projectName: "",
@@ -131,6 +132,9 @@ export default function InputTask() {
         </div>
       </div>
       <div>
+        <ProjectAddingComponent>Add Project</ProjectAddingComponent>
+      </div>
+      <div>
         {tasks.map((task) => (
           <div>
             <h1>{task.data.details.taskName}</h1>
@@ -145,6 +149,9 @@ export default function InputTask() {
             {/* </button> */}
           </div>
         ))}
+      </div>
+      <div>
+        <button onClick={deleteTask}>Delete</button>
       </div>
     </div>
   );

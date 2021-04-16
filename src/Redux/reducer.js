@@ -2,6 +2,9 @@ import {
   GET_USER_ID_FAILURE,
   GET_USER_ID_REQUEST,
   GET_USER_ID_SUCCESS,
+  POST_USER_ID_FAILURE,
+  POST_USER_ID_SUCCESS,
+  POST_USER_ID_REQUEST,
   GET_USER_PROJECT_ID_SUCCESS,
   GET_USER_PROJECT_ID_FAILURE,
   GET_USER_PROJECT_ID_REQUEST,
@@ -10,17 +13,15 @@ import {
   GET_USER_TASK_SUCCESS,
   USER_LOGOUT,
 } from "./actionType";
-// import { getLocalStorage, setLocalStorage } from "../Components/LocalStorage";
 
 // const userId =  0;
 // const projects = [];
-// const tasks = getLocalStorage("tasks") || [];
 
 const initial = {
-  isAuth: false,
+  isAuth: false || localStorage.getItem("auth"),
   isLoading: false,
   isError: false,
-  userId: 0,
+  userId: 0 || localStorage.getItem("userId"),
   project: [],
   data: {
     isDataLoading: false,
@@ -31,6 +32,9 @@ const initial = {
 export function reducer(state = initial, { type, payload }) {
   switch (type) {
     case USER_LOGOUT:
+      localStorage.setItem("auth", false);
+      localStorage.setItem("userId", 0);
+      localStorage.clear();
       return {
         ...state,
         isAuth: false,
@@ -42,6 +46,7 @@ export function reducer(state = initial, { type, payload }) {
       };
     case GET_USER_ID_SUCCESS:
       console.log(payload);
+      localStorage.setItem("auth", true);
       return {
         ...state,
         isLoading: false,
@@ -54,6 +59,26 @@ export function reducer(state = initial, { type, payload }) {
         isLoading: false,
         isError: true,
       };
+    case POST_USER_ID_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        isError: false,
+      };
+    case POST_USER_ID_SUCCESS:
+      // console.log(payload);
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        // userId: payload,
+      };
+    case POST_USER_ID_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+      };
     case GET_USER_PROJECT_ID_REQUEST:
       return {
         ...state,
@@ -61,7 +86,6 @@ export function reducer(state = initial, { type, payload }) {
       };
     case GET_USER_PROJECT_ID_SUCCESS:
       console.log(payload);
-      // setLocalStorage("projects", payload);
       return {
         ...state,
         project: payload,
