@@ -283,7 +283,6 @@ export const getUserTasks = (payload) => async (dispatch) => {
       .then((res) => {
         console.log(res);
         dispatch(getTaskSuccess(res.data));
-        
       })
       .catch((er) => {
         console.log(er);
@@ -321,11 +320,12 @@ export const getUserTasksUserId = (payload) => async (dispatch) => {
 
 // export const deleteTask = async () => {
 //   try {
-//     await axios({
-//       method: "DELETE",
-//       url:
-//         "https://json-server-mocker-masai-test.herokuapp.com/tasks?taskId=a94c2ae8-4ee5-409d-88db-e497a01758fc",
-//     })
+//     await axios.delete("https://json-server-mocker-masai-test.herokuapp.com/tasks")
+//     // ({
+//     //   method: "DELETE",
+//     //   url:
+//     //     "https://json-server-mocker-masai-test.herokuapp.com/tasks/:id/taskId=a94c2ae8-4ee5-409d-88db-e497a01758fc",
+//     // })
 //       // .delete(
 //       //   "https://json-server-mocker-masai-test.herokuapp.com/tasks",
 //       //   {
