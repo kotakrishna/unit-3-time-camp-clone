@@ -48,15 +48,16 @@ export default function InnerPage() {
       </div>
       <div className="task">
         {project.map((i) => (
-          <div key={i.projectId}>
-            <ProjectAccordion
-              className="task_details"
-              projectId={i.projectId}
-              subTask={tasks?.filter((task) => task.projectId === i.projectId)}
-            >
-              {i.projectName}
-            </ProjectAccordion>
-          </div>
+          // <div >
+          <ProjectAccordion
+            key={i.projectId}
+            className="task_details"
+            projectId={i.projectId}
+            subTask={tasks?.filter((task) => task.projectId === i.projectId)}
+          >
+            {i.projectName}
+          </ProjectAccordion>
+          // </div>
         ))}
       </div>
 

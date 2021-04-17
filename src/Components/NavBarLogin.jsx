@@ -127,7 +127,10 @@ export default function NavBarLogin() {
                 Time Sheets
               </Link>
             </RouterLink>
-            <RouterLink style={{ color: "black", textDecoration: "none" }}>
+            <RouterLink
+              to="/reports-page"
+              style={{ color: "black", textDecoration: "none" }}
+            >
               <Link
                 // variant="button"
                 color="textPrimary"
@@ -150,20 +153,6 @@ export default function NavBarLogin() {
                 style={{ textDecoration: "none" }}
               >
                 Projects
-              </Link>
-            </RouterLink>
-            <RouterLink
-              to="/test"
-              style={{ color: "black", textDecoration: "none" }}
-            >
-              <Link
-                // variant="button"
-                color="textPrimary"
-                variant="subtitle1"
-                className={classes.link}
-                style={{ textDecoration: "none" }}
-              >
-                test
               </Link>
             </RouterLink>
           </nav>
