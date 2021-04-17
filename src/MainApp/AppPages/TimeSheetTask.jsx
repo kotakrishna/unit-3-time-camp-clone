@@ -49,7 +49,7 @@ export function TimeSheetTask({data}){
                     startTimer:true,
                     stopTimer:false,
                     startTime:new Date(),
-                    stopTime:data.data.time.stoptTime,
+                    stopTime:data.data.time.stopTime,
                     taskName: data.data.details.taskName,
                     taskNotes: data.data.details.taskNotes
                     
@@ -57,7 +57,7 @@ export function TimeSheetTask({data}){
                 }
                 let timeSpent = data.data.details.timeSpent
                 console.log(params.stopTime)
-                dispatch(updateTasks(params,data.id, timeSpent, localStorage.getItem("userId")))
+                dispatch(updateTasks(params, data.id, timeSpent, localStorage.getItem("userId")))
                 
             } 
             else if(data.data.timer.startTimer){
