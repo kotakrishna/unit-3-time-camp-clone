@@ -54,10 +54,12 @@ export function TimeSheets(){
     
     `;
     const filterCondition = (item) => {
-        // let taskDate = new Date(`${item.data.time.stopTime}`)
-        // taskDate = taskDate.toDateString()
-        // return (`${taskDate}` === `${calVal.toDateString()}`)
-        return true;
+        let taskDate = new Date(item.data.time.startTime).toDateString()
+        let calValDate = new Date(`${calVal}`).toDateString()
+        
+        return (`${taskDate}` === `${calValDate}`)
+        // return true;
+        
     }
     React.useEffect(()=>{
         dispatch(getTasks(localStorage.getItem("userId")))
@@ -166,8 +168,8 @@ export function TimeSheets(){
             <div className={styles.tasksCont}>
                 {
                     tasks.filter(filterCondition).map(item=>{
-                        // console.log(item.data.time.stopTime)
-                        
+                        // console.log("Ajay")
+                        console.log(new Date(`${item.data.time.stopTime}`).toDateString())
                         return <TimeSheetTask data = {item} key={item.id}/>
                     })
                 }
