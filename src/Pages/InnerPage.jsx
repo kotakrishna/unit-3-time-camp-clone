@@ -46,9 +46,9 @@ export default function InnerPage() {
         </Link>
         </div>
       </div>
-      <div>
+      <div className="task">
         {project.map((i) => (
-          <div
+          <div 
             key={i.projectId}
             // style={{
             //   border: "1px solid black",
@@ -58,25 +58,19 @@ export default function InnerPage() {
             //   margin: " auto",
             // }}
           >
-            <ProjectAccordion
+            <ProjectAccordion className="task_details"
               projectId={i.projectId}
               subTask={tasks?.filter((task) => task.projectId === i.projectId)}
             >
               {i.projectName}
             </ProjectAccordion>
-            {/* <div>
-              <h1>{i.projectName}</h1>
-            </div>
-            <div>
-              <h5> {i.projectDetails}</h5>
-            </div>
-            <button onClick={() => handleProject(i.projectId)}>
-              Get tasks of this project
-            </button> */}
+            
           </div>
         ))}
-      </div>
-      <h1>All Tasks</h1>
+     </div>
+     
+      
+      <h1 >All Tasks</h1>
       <div>
         {tasks?.map((task) => (
           <div
@@ -87,14 +81,19 @@ export default function InnerPage() {
               padding: "1%",
               width: "700px",
               margin: "auto",
+              background:"blue",
+              borderBlockStyle:"5px",
+              marginBottom:"10px",
+              borderRadius:"10px",
               gridTemplateColumns: "150px 400px 100px",
             }}
           >
             <h2>{task.data.details.taskName}</h2>
             <h4>{task.data.details.taskNotes}</h4>
-            <div>
-              <TaskAddingComponent
+            <div className="another_task">
+              <TaskAddingComponent 
                 parentId={task.taskId}
+                
                 userId={task.userId}
                 projectId={task.projectId}
               >

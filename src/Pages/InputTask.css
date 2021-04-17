@@ -4,3 +4,10 @@
 .project_details > label{
     display: flex;
 }
+/* .add_task{
+    background-color: chartreuse;
+} */
+.task{
+    background-color: chartreuse;
+    
+}

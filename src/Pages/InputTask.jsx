@@ -103,7 +103,7 @@ export default function InputTask() {
       </form> */}
       <div>
         <h1>
-          <TaskAddingComponent>Add Task</TaskAddingComponent>
+          <TaskAddingComponent className="add_task">Add Task</TaskAddingComponent>
         </h1>
         {/* <div>
           <form action="" onSubmit={handleSubmitTask}>
