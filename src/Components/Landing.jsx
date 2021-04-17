@@ -17,17 +17,17 @@ function Landing(){
           industries.
         </p>
         <div className="form">
-          <form action="https://app.timecamp.com/auth/register" method="POST" className="inline-form-tc">
+          <form >
             <div className="form-wrapper">
               <input className="inp" placeholder="Your e-mail address" type="email" name="email"/>
               <p className="terms-submission">
                 <label><input type="checkbox" required="required"/> By signing up you
                   agree to our
-                  <a href="/terms-conditions/" rel="nofollow noopener noreferrer" target="_blank">Terms and Conditions</a>
+                  <a  target="_blank">Terms and Conditions</a>
                   and
-                  <a href="/privacy-policy/" rel="nofollow noopener noreferrer" target="_blank">Privacy Policy</a>.</label>
+                  <a  target="_blank">Privacy Policy</a>.</label>
               </p>
-              <button type="submit" className="btn-filled green form-home-top">Sign up - it's free</button>
+              <button type="submit" className="btn-filled ">Sign up - it's free</button>
             </div>
           </form>
         </div>
