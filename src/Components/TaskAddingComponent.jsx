@@ -37,7 +37,7 @@ export default function TaskAddingComponent({
       },
       details: {
         taskName: "",
-        timeSpent: 0,
+        timeSpent: [],
         taskNotes: "",
       },
     },

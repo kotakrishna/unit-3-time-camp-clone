@@ -8,12 +8,32 @@
 /* .timeSheets>div{
     border: 1px solid rgb(202, 200, 200);
 } */
+
+.stopEntry{
+    width:150px;
+    padding:10px 5px;
+    border-radius:10px;
+    font-size:15px;
+    font-weight:500;
+    cursor:pointer;
+    background:#F90500;
+    color:white;
+    margin:0 5px;
+    display: flex;
+
+}
+.stopEntry{
+    width:5px;
+    height:5px;
+    border-radius: 1px;
+}
 .calendar{
     display:flex;
     height:40px;
     align-items: center;
     border-radius: 10px;
     border: 1px solid rgb(202, 200, 200);
+    cursor:pointer;
 }
 .calendar>div{
     height: 100%;
@@ -70,6 +90,7 @@
     width:25%;
     height:60%;
 }
+
 .refresh{
     width:60px;
     border: 1px solid rgb(202, 200, 200);
@@ -214,8 +235,86 @@
 }
 .calendarPopup{
     position: absolute;
-    top:40px;
+    top:50px;
     left:30px;
     width:250px;
     height:250px;
 }
+/* 
+ */
+
+ .searchModal{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top:80px;
+    left:50px;
+    height:300px;
+    width:400px;
+    background-color: white;
+    border-radius:10px;
+    padding:20px;
+    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+
+ }
+ .inpPart{
+     display: flex;
+     justify-content: space-between;
+ }
+ .inputF{
+     display: flex;
+     height:40px;
+     align-items: center;
+     width:80%;
+     background: whitesmoke;
+     justify-content: space-between;
+     
+
+ }
+ .inputF>input{
+     border:none;
+     outline: whitesmoke;
+     background: whitesmoke;
+     height:30px;
+     font-size: 15px;
+
+ }
+ .inputF>img{
+    height:50%
+ }
+ .addT{
+    width:40px;
+    height: 40px;
+    border-radius: 5px;
+    background: white;
+    border:1px solid #cac9c9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #797979;
+    cursor: pointer;
+ }
+ .addT:hover{
+     background: #EAEAEA;
+ }
+ .recUsed{
+     color: #797979;
+     font-size: 12px;
+     font-weight: 600;
+     margin-top: 20px;
+     text-align: left;
+ }
+ .proTask{
+    color: #797979;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 20px;
+    text-align: left;
+ }

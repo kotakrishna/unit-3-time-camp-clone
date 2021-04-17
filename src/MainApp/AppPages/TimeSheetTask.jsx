@@ -10,11 +10,12 @@ import { loaddata } from '../../taskUtil/taskLocalStorage';
 import { TimeInput } from './TimeInput';
 
 export function TimeSheetTask({data}){
+    const dayjs = require('dayjs');
     const [state, setState] = React.useState(false)
     const [startCheck, setStartCheck] = React.useState(false)
 
-    const [manualStrTime,setManualStrTime] = React.useState('18:00')
-    const [manualStpTime,setManualStpTime] = React.useState('18:00')
+    const [manualStrTime,setManualStrTime] = React.useState(`${dayjs().format('HH:mm')}`)
+    const [manualStpTime,setManualStpTime] = React.useState(`${dayjs().format('HH:mm')}`)
     const tasks = useSelector(state=>state.appRed.tasks)
     const dispatch = useDispatch()
 
@@ -48,14 +49,14 @@ export function TimeSheetTask({data}){
                     startTimer:true,
                     stopTimer:false,
                     startTime:new Date(),
-                    stopTime:"",
+                    stopTime:data.data.time.stoptTime,
                     taskName: data.data.details.taskName,
                     taskNotes: data.data.details.taskNotes
                     
                 
                 }
                 let timeSpent = data.data.details.timeSpent
-                console.log(timeSpent)
+                console.log(params.stopTime)
                 dispatch(updateTasks(params,data.id, timeSpent, localStorage.getItem("userId")))
                 
             } 
@@ -72,7 +73,7 @@ export function TimeSheetTask({data}){
                         
                     }
                     let timeSpent = [...data.data.details.timeSpent, Math.floor((new Date(params.stopTime) - new Date(params.startTime))/1000)]
-                    console.log(timeSpent)
+                    console.log(params.stopTime)
                     dispatch(updateTasks(params,data.id, timeSpent, localStorage.getItem("userId")))
                 } else {
                     const params = {
@@ -86,7 +87,7 @@ export function TimeSheetTask({data}){
                         
                     }
                     let timeSpent = data.data.details.timeSpent
-                    console.log(timeSpent)
+                    console.log(params.stopTime)
                     dispatch(updateTasks(params,data.id, timeSpent, localStorage.getItem("userId")))
                 }
                 
