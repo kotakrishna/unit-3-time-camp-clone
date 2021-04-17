@@ -54,9 +54,9 @@ export function TimeSheetTask({data}){
                     
                 
                 }
-                let timeSpent = Number(data.data.details.timeSpent)
+                let timeSpent = data.data.details.timeSpent
                 console.log(timeSpent)
-                dispatch(updateTasks(params,data.id, timeSpent, loaddata("userId")))
+                dispatch(updateTasks(params,data.id, timeSpent, localStorage.getItem("userId")))
                 
             } 
             else if(data.data.timer.startTimer){
@@ -71,9 +71,9 @@ export function TimeSheetTask({data}){
                         taskNotes: data.data.details.taskNotes,
                         
                     }
-                    let timeSpent = Number(data.data.details.timeSpent) + (new Date(params.stopTime) - new Date(params.startTime))
+                    let timeSpent = [...data.data.details.timeSpent, Math.floor((new Date(params.stopTime) - new Date(params.startTime))/1000)]
                     console.log(timeSpent)
-                    dispatch(updateTasks(params,data.id, timeSpent, loaddata("userId")))
+                    dispatch(updateTasks(params,data.id, timeSpent, localStorage.getItem("userId")))
                 } else {
                     const params = {
                 
@@ -85,9 +85,9 @@ export function TimeSheetTask({data}){
                         taskNotes: data.data.details.taskNotes,
                         
                     }
-                    let timeSpent = Number(data.data.details.timeSpent)
+                    let timeSpent = data.data.details.timeSpent
                     console.log(timeSpent)
-                    dispatch(updateTasks(params,data.id, timeSpent, loaddata("userId")))
+                    dispatch(updateTasks(params,data.id, timeSpent, localStorage.getItem("userId")))
                 }
                 
                 
@@ -118,7 +118,14 @@ export function TimeSheetTask({data}){
                     </Div>
                 </div>
 
-                <Div className={styles.duration}>{moment.utc(data.data.details.timeSpent*1000).format('HH:mm:ss')}</Div>
+                <Div className={styles.duration}>
+                    {/* moment.utc(data.data.details.timeSpent*1000).format('HH:mm:ss') */}
+                    {
+                       moment.utc((data.data.details.timeSpent.length!=0 ? data.data.details.timeSpent?.reduce((ac,ele)=>{
+                            return ac+ele
+                        }) : 0)*1000).format('HH:mm:ss')
+                    }
+                </Div>
 
                 <StartStopButton onClick={handleStartAndStop} style={{display:"flex",alignItems:"center",justifyContent:"center",width:35, height:35}}>
                     {

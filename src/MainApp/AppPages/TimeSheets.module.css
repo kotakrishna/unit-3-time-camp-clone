@@ -212,3 +212,10 @@
     background: white;
     border-radius: 3px;
 }
+.calendarPopup{
+    position: absolute;
+    top:40px;
+    left:30px;
+    width:250px;
+    height:250px;
+}
