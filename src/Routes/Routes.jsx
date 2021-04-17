@@ -11,6 +11,7 @@ import PrivateRoute from "../Components/PrivateRoute";
 import { TimeSheets } from "../MainApp/AppPages/TimeSheets";
 import { Go } from "../MainApp/AppPages/test";
 import NavBarLogin from "../Components/NavBarLogin";
+import ReportsPage from "../Pages/ReportsPage";
 export default function Routes() {
   return (
     <div>
@@ -44,6 +45,10 @@ export default function Routes() {
         <PrivateRoute path="/inner-page" exact>
           <NavBarLogin />
           <InnerPage />
+        </PrivateRoute>
+        <PrivateRoute path="/reports-page" exact>
+          <NavBarLogin />
+          <ReportsPage />
         </PrivateRoute>
         <PrivateRoute path="/input-page" exact>
           <NavBarLogin />

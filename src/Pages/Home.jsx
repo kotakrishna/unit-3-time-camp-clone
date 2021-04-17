@@ -18,9 +18,9 @@ export default function Home() {
   `;
   return (
     <div className={styles.homeCont}>
-      <NavLink to="/timesheets">
+      {/* <NavLink to="/timesheets">
         <h3>Time sheets</h3>
-      </NavLink>
+      </NavLink> */}
       <Landing />
       <div className={styles.adv}>
         <div className={styles.line}></div>
