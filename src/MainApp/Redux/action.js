@@ -1,4 +1,3 @@
-
 import { GET_TASK_FAILURE,
     GET_TASK_REQ,
     GET_TASK_SUCCESS,
@@ -88,7 +87,7 @@ export const updateTasks = (params, id, timeS,userId) => dispatch =>{
                 },
                 details: {
                   taskName: params.taskName,
-                  timeSpent:Math.floor(timeS/1000),
+                  timeSpent:timeS,
                   taskNotes: params.taskNotes
                 }
               }
