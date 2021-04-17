@@ -5,12 +5,17 @@ import { Link } from "react-router-dom";
 // import ProjectAddingComponent from "../Components/ProjectAddingComponent";
 import TaskAddingComponent from "../Components/TaskAddingComponent";
 import ProjectAccordion from "../Components/ProjectAccordion";
-import "./InnerPage.css"
+import "./InnerPage.css";
 import { useDispatch } from "react-redux";
-import SearchProject from '../Components/SearchProject'
+import SearchProject from "../Components/SearchProject";
 import { getUserProjectId } from "../Redux/action";
+import ProjectEditCard from "../Components/ProjectEditCard";
 
 export default function InnerPage() {
+  let projectDetails = React.useRef();
+  // projectDetails.current = {
+  //   projectName: "okay",
+  // };
   const dispatch = useDispatch();
 
   const project = useSelector((state) => state.log.project);
@@ -26,56 +31,42 @@ export default function InnerPage() {
     // dispatch(getUserTasksUserId(userId));
   }, []);
 
+  let [projectData_edit, setProjectData_edit] = React.useState({});
   return (
     <div className="project_main">
       <div className="project_page">
         <h3 className="inner_page">Projects</h3>
         <div className="project_page">
-        {/* <input className="input"  placeholder="Search"/> */}
-          <SearchProject style={{flex:1}} />
-        <Link style={{ textDecoration: "none" }} to="/input-page">
-          <button  className="add_project">
-            Add Project or Task
-          </button>
-          <button  className="add_project">
-            Filter
-          </button>
-          <button className="add_project">
-            Archieved
-          </button>
-        </Link>
+          {/* <input className="input"  placeholder="Search"/> */}
+          <SearchProject style={{ flex: 1 }} />
+          <Link style={{ textDecoration: "none" }} to="/input-page">
+            <button className="add_project">Add Project or Task</button>
+            <button className="add_project">Filter</button>
+            <button className="add_project">Archieved</button>
+          </Link>
         </div>
       </div>
       <div>
         {project.map((i) => (
-          <div
-            key={i.projectId}
-            // style={{
-            //   border: "1px solid black",
-            //   width: "1000px",
-            //   display: "grid",
-            //   gridTemplateColumns: "auto auto auto",
-            //   margin: " auto",
-            // }}
+          // <div key={i.projectId}
+          // >
+          <ProjectAccordion
+            projectId={i.projectId}
+            subTask={tasks?.filter((task) => task.projectId === i.projectId)}
           >
-            <ProjectAccordion
-              projectId={i.projectId}
-              subTask={tasks?.filter((task) => task.projectId === i.projectId)}
+            {i.projectName}
+            <button
+              onClick={() => {
+                setProjectData_edit({ ...i });
+                // projectDetails.current = i;
+              }}
             >
-              {i.projectName}
-            </ProjectAccordion>
-            {/* <div>
-              <h1>{i.projectName}</h1>
-            </div>
-            <div>
-              <h5> {i.projectDetails}</h5>
-            </div>
-            <button onClick={() => handleProject(i.projectId)}>
-              Get tasks of this project
-            </button> */}
-          </div>
+              Edit
+            </button>
+          </ProjectAccordion>
         ))}
       </div>
+      <div>{/* <ProjectEditCard {...projectData_edit} /> */}</div>
       <h1>All Tasks</h1>
       <div>
         {tasks?.map((task) => (
