@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 import { useDispatch } from 'react-redux';
 import { getTasks } from '../Redux/action';
 import { TimeSheetTask } from './TimeSheetTask';
@@ -8,10 +9,17 @@ import styles from './TimeSheets.module.css'
 import styled from 'styled-components';
 import moment from 'moment';
 import { loaddata } from '../../taskUtil/taskLocalStorage';
+import { TimeInput } from './TimeInput';
+
 export function TimeSheets(){
+    const dayjs = require('dayjs');
     const tasks = useSelector(state=>state.appRed.tasks)
     const [calendar, setCalendar] = React.useState(false)
     const [calVal, setCalVal] = React.useState(new Date())
+    const [taskPro, setTaskPro] = React.useState(false)
+    const [searchVal, setSearchVal] = React.useState("")
+    const [manualStrTime,setManualStrTime] = React.useState(`${dayjs().format('HH:mm')}`)
+    const [manualStpTime,setManualStpTime] = React.useState(`${dayjs().format('HH:mm')}`)
     const dispatch = useDispatch()
 
     // const handleTasks = () => {
@@ -38,7 +46,19 @@ export function TimeSheets(){
     &:hover{
         background:#3eb44c;
     }
-`;
+    `;
+    const CalCont = styled.div`
+        ${calendar && `height: 100%;
+        border:1px solid #0dd43b;
+        color: #09da3a;`}
+    
+    `;
+    const filterCondition = (item) => {
+        // let taskDate = new Date(`${item.data.time.stopTime}`)
+        // taskDate = taskDate.toDateString()
+        // return (`${taskDate}` === `${calVal.toDateString()}`)
+        return true;
+    }
     React.useEffect(()=>{
         dispatch(getTasks(localStorage.getItem("userId")))
     },[])
@@ -46,12 +66,15 @@ export function TimeSheets(){
         <div>
             <div className={styles.timeSheets}>
                 <div style={{display:"flex", alignItems:"center"}}>
-                    <div className={styles.calendar}style={{position:"relative"}}>
+                    <div className={styles.calendar} style={{position:"relative"}}>
                         <div className={styles.prev}>{"<"}</div>
-                        <div onClick = {()=>setCalendar(!calendar)} className={styles.calLogo}>
-                            <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/calendar-512.png" alt=""/>
-                            <div>^</div>
-                        </div>
+                        <CalCont>
+                            <div onClick = {()=>setCalendar(!calendar)} className={styles.calLogo}>
+                                <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/calendar-512.png" alt=""/>
+                                <div>^</div>
+                            </div>
+                        </CalCont>
+                        
                         {calendar && <div className={styles.calendarPopup}>
                             <div>
                                 <Calendar
@@ -63,7 +86,7 @@ export function TimeSheets(){
                         <div className={styles.next}>{">"}</div>
                     </div>
                     <div>
-                        <div className={styles.date}>{new Date().toDateString()}</div>
+                        <div className={styles.date}>{calVal.toDateString()}</div>
                     </div>
                 </div>
                 
@@ -98,26 +121,42 @@ export function TimeSheets(){
                 </div>
             </div>
 
-            <div className={styles.taskCont}>
-                <Div className={styles.selectInp}>
+            <div className={styles.taskCont} style={{position:"relative"}}>
+                <Div className={styles.selectInp} onClick = {()=>setTaskPro(!taskPro)}>
                     Select task and project
                 </Div>
+                {taskPro && <div className={styles.searchModal}>
+                                <div className={styles.inpPart} >
+                                    <div className={styles.inputF}>
+                                        <input type="text" value={searchVal} onChange={(e)=>setSearchVal(e.target.value)} />
+                                        <img src="https://s3.amazonaws.com/freestock-prod/450/freestock_567790828.jpg" alt=""/>
+                                    </div>
+                                    <div className={styles.addT}>+</div>
+                                </div>
+                                <div className={styles.recUsed}>
+                                    <div>RECENTLY USED</div>
+                                </div>
+                                <div className={styles.proTask}>
+                                    <div>PROJECT AND TASKS</div>
+                                </div>
+                            </div>
+                }
                 <div className={styles.timerCont}>
                     <Div className={styles.note}>note</Div>
                     <div className={styles.middle}></div>
                     <div style={{display:"flex",justifyContent:"space-around",width:200, alignItems:"center"}}>
                         <Div className={styles.timer}>
-                            <input type="time"/>
+                            <TimeInput currentValue = {manualStrTime} onInputChange = {newVal=>setManualStrTime(newVal)}/>
                         </Div>
                         <div style={{fontSize:20}}>-</div>
                         <Div className={styles.timer}>
-                            <input type="time" placeholder={moment().format('LT')}/>
+                            <TimeInput currentValue = {manualStpTime} onInputChange = {newVal=>setManualStpTime(newVal)}/>
                         </Div>
                     </div>
 
                     <Div className={styles.duration}>0h 00m</Div>
 
-                    <div>start timer</div>
+                    <div style={{width:"100px"}}>start timer</div>
 
                     <Button>ADD TIME ENTRY</Button>
                 </div>
@@ -126,8 +165,10 @@ export function TimeSheets(){
 
             <div className={styles.tasksCont}>
                 {
-                    tasks.map(item=>{
-                        return <TimeSheetTask data = {item}/>
+                    tasks.filter(filterCondition).map(item=>{
+                        // console.log(item.data.time.stopTime)
+                        
+                        return <TimeSheetTask data = {item} key={item.id}/>
                     })
                 }
             </div>
