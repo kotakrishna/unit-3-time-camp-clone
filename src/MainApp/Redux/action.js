@@ -1,4 +1,3 @@
-
 import { GET_TASK_FAILURE,
     GET_TASK_REQ,
     GET_TASK_SUCCESS,
