@@ -46,27 +46,20 @@ export default function InnerPage() {
           </Link>
         </div>
       </div>
-      <div>
+      <div className="task">
         {project.map((i) => (
-          // <div key={i.projectId}
-          // >
-          <ProjectAccordion
-            projectId={i.projectId}
-            subTask={tasks?.filter((task) => task.projectId === i.projectId)}
-          >
-            {i.projectName}
-            <button
-              onClick={() => {
-                setProjectData_edit({ ...i });
-                // projectDetails.current = i;
-              }}
+          <div key={i.projectId}>
+            <ProjectAccordion
+              className="task_details"
+              projectId={i.projectId}
+              subTask={tasks?.filter((task) => task.projectId === i.projectId)}
             >
-              Edit
-            </button>
-          </ProjectAccordion>
+              {i.projectName}
+            </ProjectAccordion>
+          </div>
         ))}
       </div>
-      <div>{/* <ProjectEditCard {...projectData_edit} /> */}</div>
+
       <h1>All Tasks</h1>
       <div>
         {tasks?.map((task) => (
@@ -78,12 +71,16 @@ export default function InnerPage() {
               padding: "1%",
               width: "700px",
               margin: "auto",
+              background: "blue",
+              borderBlockStyle: "5px",
+              marginBottom: "10px",
+              borderRadius: "10px",
               gridTemplateColumns: "150px 400px 100px",
             }}
           >
             <h2>{task.data.details.taskName}</h2>
             <h4>{task.data.details.taskNotes}</h4>
-            <div>
+            <div className="another_task">
               <TaskAddingComponent
                 parentId={task.taskId}
                 userId={task.userId}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-
+import Calendar from 'react-calendar';
 import { useDispatch } from 'react-redux';
 import { getTasks } from '../Redux/action';
 import { TimeSheetTask } from './TimeSheetTask';
@@ -10,6 +10,8 @@ import moment from 'moment';
 import { loaddata } from '../../taskUtil/taskLocalStorage';
 export function TimeSheets(){
     const tasks = useSelector(state=>state.appRed.tasks)
+    const [calendar, setCalendar] = React.useState(false)
+    const [calVal, setCalVal] = React.useState(new Date())
     const dispatch = useDispatch()
 
     // const handleTasks = () => {
@@ -38,18 +40,26 @@ export function TimeSheets(){
     }
 `;
     React.useEffect(()=>{
-        dispatch(getTasks(loaddata("userId")))
+        dispatch(getTasks(localStorage.getItem("userId")))
     },[])
     return (
         <div>
             <div className={styles.timeSheets}>
                 <div style={{display:"flex", alignItems:"center"}}>
-                    <div className={styles.calendar}>
+                    <div className={styles.calendar}style={{position:"relative"}}>
                         <div className={styles.prev}>{"<"}</div>
-                        <div className={styles.calLogo}>
+                        <div onClick = {()=>setCalendar(!calendar)} className={styles.calLogo}>
                             <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/calendar-512.png" alt=""/>
                             <div>^</div>
                         </div>
+                        {calendar && <div className={styles.calendarPopup}>
+                            <div>
+                                <Calendar
+                                    onChange={(value)=>setCalVal(value)}
+                                    value={calVal}
+                                />
+                            </div>
+                            </div>}
                         <div className={styles.next}>{">"}</div>
                     </div>
                     <div>
