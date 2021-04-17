@@ -9,6 +9,7 @@ import InnerPage from "../Pages/InnerPage";
 import InputTask from "../Pages/InputTask";
 import PrivateRoute from "../Components/PrivateRoute";
 import { TimeSheets } from "../MainApp/AppPages/TimeSheets";
+import { Go } from "../MainApp/AppPages/test";
 import NavBarLogin from "../Components/NavBarLogin";
 export default function Routes() {
   return (
@@ -29,6 +30,11 @@ export default function Routes() {
         <Route path="/auth-login" exact>
           <AuthLogin />
           <Footer />
+        </Route>
+        <Route path="/test">
+          <Go />
+          {/* <h1>timer</h1> */}
+          {/* <Footer /> */}
         </Route>
         <Route path="/auth-register" exact>
           <NavBar />
