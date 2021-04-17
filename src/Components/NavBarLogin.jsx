@@ -10,8 +10,16 @@ import { Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch } from "react-redux";
 import { userLogout } from "../Redux/action";
+import AccessTimeIcon from "@material-ui/icons/AccessTime";
+import DonutSmallTwoToneIcon from "@material-ui/icons/DonutSmallTwoTone";
+import FolderOpenIcon from "@material-ui/icons/FolderOpen";
+import ComputerIcon from "@material-ui/icons/Computer";
+import SettingsIcon from "@material-ui/icons/Settings";
+import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 import "../App.css";
+// import HoverComponent from "./HoverComponent";
 const useStyles = makeStyles((theme) => ({
   "@global": {
     ul: {
@@ -32,14 +40,14 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "10px",
   },
   toolbarTitle: {
-    flexGrow: 0.9,
+    flexGrow: 0.1,
   },
   link: {
     margin: theme.spacing(1, 1.5),
     fontSize: "15px",
     color: "black",
     "&:hover": {
-      color: "gold",
+      color: "#039259",
     },
   },
   // marginTop: "10px"
@@ -58,28 +66,6 @@ const useStyles = makeStyles((theme) => ({
   heroContent: {
     padding: theme.spacing(8, 0, 6),
   },
-  // cardHeader: {
-  //   backgroundColor:
-  //     theme.palette.type === "light"
-  //       ? theme.palette.grey[200]
-  //       : theme.palette.grey[700],
-  // },
-  // cardPricing: {
-  //   display: "flex",
-  //   justifyContent: "center",
-  //   alignItems: "baseline",
-  //   marginBottom: theme.spacing(2),
-  // },
-  // footer: {
-  //   borderTop: `1px solid ${theme.palette.divider}`,
-  //   marginTop: theme.spacing(8),
-  //   paddingTop: theme.spacing(3),
-  //   paddingBottom: theme.spacing(3),
-  //   [theme.breakpoints.up("sm")]: {
-  //     paddingTop: theme.spacing(6),
-  //     paddingBottom: theme.spacing(6),
-  //   },
-  // },
 }));
 
 export default function NavBarLogin() {
@@ -109,22 +95,32 @@ export default function NavBarLogin() {
             className={classes.toolbarTitle}
           >
             <RouterLink to="/">
-              <img src="/colorLogo.svg" alt="" />
+              <img height="35px" src="/ICON-TC-sygnet.svg" alt="ICON" />
             </RouterLink>
           </Typography>
-          <nav>
+          <nav
+            style={{
+              display: "grid",
+              gridTemplateColumns: "auto auto auto auto",
+              gridColumnGap: "10px",
+            }}
+          >
             <RouterLink
               to="/timesheets"
-              style={{ color: "black", textDecoration: "none" }}
+              style={{
+                color: "black",
+                textDecoration: "none",
+              }}
             >
               <Link
                 // variant="button"
                 color="textPrimary"
                 variant="subtitle1"
                 className={classes.link}
-                style={{ textDecoration: "none" }}
+                style={{ textDecoration: "none", display: "flex" }}
               >
-                Time Sheets
+                <AccessTimeIcon style={{ height: "20px" }} />
+                <Typography variant="subtitle2">Time Sheets</Typography>
               </Link>
             </RouterLink>
             <RouterLink
@@ -136,9 +132,10 @@ export default function NavBarLogin() {
                 color="textPrimary"
                 variant="subtitle1"
                 className={classes.link}
-                style={{ textDecoration: "none" }}
+                style={{ textDecoration: "none", display: "flex" }}
               >
-                Reports
+                <DonutSmallTwoToneIcon style={{ height: "18px" }} />
+                <Typography variant="subtitle2">Reports</Typography>
               </Link>
             </RouterLink>
             <RouterLink
@@ -150,28 +147,121 @@ export default function NavBarLogin() {
                 color="textPrimary"
                 variant="subtitle1"
                 className={classes.link}
-                style={{ textDecoration: "none" }}
+                style={{ textDecoration: "none", display: "flex" }}
               >
-                Projects
+                <FolderOpenIcon style={{ height: "18px" }} />
+                <Typography variant="subtitle2"> Projects </Typography>
+                {/* Projects */}
+              </Link>
+            </RouterLink>
+            <RouterLink
+              to="/inner-page"
+              style={{ color: "black", textDecoration: "none" }}
+            >
+              <Link
+                // variant="button"
+                color="textPrimary"
+                variant="subtitle1"
+                className={classes.link}
+                onMouseEnter
+                style={{ textDecoration: "none", display: "flex" }}
+              >
+                <Typography variant="subtitle2">
+                  <ComputerIcon style={{ height: "18px" }} />
+                  Computer Time
+                </Typography>
+                {/* Projects */}
               </Link>
             </RouterLink>
           </nav>
           {/* ( */}
-          <RouterLink
-            to="/auth-login"
-            style={{ color: "black", textDecoration: "none" }}
+          <nav
+            style={{
+              marginLeft: "100px",
+              display: "grid",
+              gridTemplateColumns: "auto auto auto auto",
+            }}
           >
-            <Button
-              href="#"
-              color="primary"
-              variant="subtitle1"
-              className={classes.button}
-              style={{ marginLeft: "50px", padding: "13px", width: "230px" }}
-              onClick={handleLogOut}
+            <RouterLink
+              to="/inner-page"
+              style={{ color: "black", textDecoration: "none" }}
             >
-              Log Out
-            </Button>
-          </RouterLink>
+              <Link
+                // variant="button"
+                color="textPrimary"
+                variant="subtitle1"
+                className={classes.link}
+                onMouseEnter
+                style={{ textDecoration: "none", display: "flex" }}
+              >
+                <SettingsIcon style={{ height: "18px" }} />
+              </Link>
+            </RouterLink>
+            <RouterLink
+              to="/inner-page"
+              style={{ color: "black", textDecoration: "none" }}
+            >
+              <Link
+                // variant="button"
+                color="textPrimary"
+                variant="subtitle1"
+                className={classes.link}
+                onMouseEnter
+                style={{ textDecoration: "none", display: "flex" }}
+              >
+                {/* <SettingsIcon style={{ height: "18px" }} /> */}
+
+                <Button
+                  href="#"
+                  color="primary"
+                  variant="subtitle1"
+                  className={classes.button}
+                  style={{
+                    padding: "5px",
+                    width: "70px",
+                    borderRadius: "10px",
+                    backgroundColor: "#f3bd0d",
+                  }}
+                  onClick={handleLogOut}
+                >
+                  Upgrade
+                </Button>
+              </Link>
+            </RouterLink>
+            <RouterLink
+              to="/inner-page"
+              style={{ color: "black", textDecoration: "none" }}
+            >
+              <Link
+                // variant="button"
+                color="textPrimary"
+                variant="subtitle1"
+                className={classes.link}
+                onMouseEnter
+                style={{ textDecoration: "none", display: "flex" }}
+              >
+                <HelpOutlineIcon style={{ height: "18px" }} />
+              </Link>
+            </RouterLink>
+
+            <RouterLink
+              to="/auth-login"
+              style={{ color: "black", textDecoration: "none" }}
+            >
+              <Button
+                href="#"
+                color="primary"
+                variant="subtitle1"
+                className={classes.button}
+                style={{ marginLeft: "50px", padding: "13px", width: "230px" }}
+                onClick={handleLogOut}
+                onMouseLeave
+              >
+                <AccountCircleIcon style={{ height: "18px" }} />
+                Log Out
+              </Button>
+            </RouterLink>
+          </nav>
         </Toolbar>
       </AppBar>
     </React.Fragment>
