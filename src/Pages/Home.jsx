@@ -118,9 +118,7 @@ export default function Home() {
             Why waste countless hours on additional data processing just to have
             a precise report? TimeCamp does it all automatically so you can
             maintain your focus on the important work.
-            {/* import { styled } from 'styled-components';
-import { styled } from 'styled-components';
-import { styled } from 'styled-components'; */}
+            
           </p>
           <div
             style={{
@@ -259,19 +257,7 @@ import { styled } from 'styled-components'; */}
           <Button>Book a demo</Button>
         </div>
       </div>
-      <div className={styles.integration}>
-        <div className={styles.integration}>
-          <p>Time tracking integrations</p>
-          <h2>
-            Easy and quick integration with more than 100 apps and work tools
-          </h2>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-        </div>
-        <div className={styles.integrationApps}></div>
-      </div>
+      
     </div>
   );
 }
