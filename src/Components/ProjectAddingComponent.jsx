@@ -44,7 +44,20 @@ export default function ProjectAddingComponent({ children }) {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      <Button
+        variant="outlined"
+        color="primary"
+        onClick={handleClickOpen}
+        style={{
+          width: "200px",
+          marginLeft: "-60px",
+          borderRadius: "10px",
+          border: "1px solid black",
+          color: "white",
+          background: "green",
+          marginTop: "10px",
+        }}
+      >
         {children}
       </Button>
       <Dialog

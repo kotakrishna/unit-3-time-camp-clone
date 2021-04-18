@@ -9,7 +9,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import { v4 as uuid } from "uuid";
 import { useDispatch } from "react-redux";
 import { postUserTaskId } from "../Redux/action";
-import "../Pages/InnerPage.css"
+import "../Pages/InnerPage.css";
 
 export default function TaskAddingComponent({
   children,
@@ -32,8 +32,8 @@ export default function TaskAddingComponent({
         stopTimer: false,
       },
       time: {
-        startTime: "",
-        stopTime: "",
+        startTime: new Date(),
+        stopTime: new Date(),
       },
       details: {
         taskName: "",
@@ -64,7 +64,18 @@ export default function TaskAddingComponent({
 
   return (
     <div>
-      <Button style={{width:"200px",marginLeft:"-130px",borderRadius:"10px",border:"1px solid black",color:"white",background:"green",marginTop:"10px"}}  onClick={handleClickOpen}>
+      <Button
+        style={{
+          width: "200px",
+          marginLeft: "-60px",
+          borderRadius: "10px",
+          border: "1px solid black",
+          color: "white",
+          background: "green",
+          marginTop: "10px",
+        }}
+        onClick={handleClickOpen}
+      >
         {children}
       </Button>
       <Dialog
