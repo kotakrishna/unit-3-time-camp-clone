@@ -40,9 +40,33 @@ export function TimeSheetTask({ data }) {
       border-radius: 5px;
     }
   `;
-  // React.useEffect(()=>{
-
-  // },[manualStpTime])
+  React.useEffect(()=>{
+      let manlStrTime = manualStrTime.trim().split(":").map(Number)
+      let manlStpTime = manualStpTime.trim().split(":").map(Number)
+      let strSeconds = ((manlStrTime[0]*60) + manlStrTime[1]) * 60
+      let stpSeconds = ((manlStpTime[0]*60) + manlStpTime[1]) * 60
+      if(strSeconds<stpSeconds){
+        let params = {
+          
+          startTimer: data.data.timer.startTimer,
+          stopTimer: data.data.timer.startTimer,
+          startTime: data.data.time.startTime,
+          stopTime: data.data.time.stopTime,
+          taskName: data.data.details.taskName,
+          taskNotes: data.data.details.taskNotes,
+          
+        }
+        let timeSpent = [...data.data.details.timeSpent,(stpSeconds-strSeconds)]
+        dispatch(
+          updateTasks(
+            params,
+            data.id,
+            timeSpent,
+            localStorage.getItem("userId")
+          )
+        );
+      }
+  },[manualStrTime, manualStpTime])
   const [isRunning, setIsRunning] = React.useState(false);
   const [time, setTime] = React.useState(0);
   const timer = React.useRef();
