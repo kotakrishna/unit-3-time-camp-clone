@@ -24,6 +24,9 @@ export default function InnerPage() {
   const userId = localStorage.getItem("userId");
   // const handleProject = (i) => {
   //   console.log(i);
+  const randomColor = () => {
+    return Math.floor(Math.random() * 256);
+  };
   React.useEffect(() => {
     console.log(project);
     // dispatch(get)
@@ -55,7 +58,19 @@ export default function InnerPage() {
             projectId={i.projectId}
             subTask={tasks?.filter((task) => task.projectId === i.projectId)}
           >
-            {i.projectName}
+            <div style={{display:"flex"}}>
+                  <div
+              style={{
+                width: 10,
+                height: 10,
+                margin: 5,
+                borderRadius: 5,
+                background: `rgb(${randomColor()},${randomColor()},${randomColor()})`,
+              }}
+            ></div>
+                {i.projectName}
+            </div>
+            
           </ProjectAccordion>
           // </div>
         ))}
@@ -72,7 +87,7 @@ export default function InnerPage() {
               padding: "1%",
               width: "700px",
               margin: "auto",
-              background: "blue",
+              background: "whiteSmoke",
               borderBlockStyle: "5px",
               marginBottom: "10px",
               borderRadius: "10px",

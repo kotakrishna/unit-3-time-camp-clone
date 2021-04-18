@@ -17,7 +17,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: theme.typography.fontWeightRegular,
   },
 }));
-
+const randomColor = () => {
+  return Math.floor(Math.random() * 256);
+};
 export default function ProjectAccordion({
   children,
   subTask = [],
@@ -25,7 +27,9 @@ export default function ProjectAccordion({
   projectId,
 }) {
   const classes = useStyles();
-
+  const increaseMargin = (value, margin) =>{
+    return margin + value;
+  }
   return (
     <div className={classes.root} style={{ width: "1000px", margin: "auto" }}>
       <Accordion style={{ minWidth: "900px" }}>
@@ -62,9 +66,19 @@ export default function ProjectAccordion({
                 // marginL={"10px"}
               >
                 <div
-                  style={{ display: "grid", gridTemplateColumns: "100px auto" }}
+                  style={{ display: "grid", gridTemplateColumns: "200px auto", marginLeft:`${increaseMargin(10, 20)}px`}}
                 >
-                  <div>{task.data.details.taskName}</div>
+                  <div style={{display:"flex", paddingLeft:"5%"}}>
+                          <div
+                  style={{
+                    width: 10,
+                    height: 10,
+                    margin: 5,
+                    borderRadius: 5,
+                    background: `rgb(${randomColor()},${randomColor()},${randomColor()})`,
+                  }}
+                ></div>
+                    {task.data.details.taskName}</div>
                   <div style={{ width: "auto", marginLeft: "90vh" }}>
                     <TaskAddingComponent
                       parentId={task.taskId}
