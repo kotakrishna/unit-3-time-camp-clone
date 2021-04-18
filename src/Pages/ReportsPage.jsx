@@ -5,6 +5,8 @@ import {
   getTimeInStringWithoutHr,
 } from "../Components/getTimeInString";
 import styled from "styled-components";
+import { getUserTasksUserId } from "../Redux/action";
+import LoadingSign from "../Components/LoadingSign";
 export default function ReportsPage() {
   const H6 = styled.p`
     text-align: "center";
@@ -36,8 +38,11 @@ export default function ReportsPage() {
   `;
   // const
   const tasks = useSelector((state) => state.log.data.tasks);
+  const isDataLoading = useSelector((state) => state.log.data.isDataLoading);
+  const dispatch = useDispatch();
   React.useEffect(() => {
     console.log(tasks);
+    dispatch(getUserTasksUserId(localStorage.getItem("userId")));
   }, []);
   const add = (a, b) => {
     return a + b;
@@ -54,7 +59,9 @@ export default function ReportsPage() {
     .reduce(add, 0);
   console.log(total);
   //   }
-  return (
+  return isDataLoading ? (
+    <LoadingSign />
+  ) : (
     <div>
       <h2>Reports page</h2>
       <div
@@ -85,6 +92,7 @@ export default function ReportsPage() {
         {tasks?.map((task) => (
           <>
             <Div
+              key={task.Id}
               style={{
                 display: "grid",
                 gridTemplateColumns: "500px 200px 100px",
