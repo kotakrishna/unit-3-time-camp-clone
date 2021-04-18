@@ -113,75 +113,74 @@ export default function NavBar() {
             </RouterLink>
           </Typography>
           <nav>
-            <RouterLink style={{ color: "black", textDecoration: "none" }}>
-              <Link
-                // variant="button"
-                color="textPrimary"
-                variant="subtitle1"
-                className={classes.link}
-                style={{ textDecoration: "none" }}
-              >
-                Features
-              </Link>
-            </RouterLink>
-            <RouterLink style={{ color: "black", textDecoration: "none" }}>
-              <Link
-                // variant="button"
-                color="textPrimary"
-                variant="subtitle1"
-                className={classes.link}
-                style={{ textDecoration: "none" }}
-              >
-                Pricing
-              </Link>
-            </RouterLink>
-            <RouterLink style={{ color: "black", textDecoration: "none" }}>
-              <Link
-                // variant="button"
-                color="textPrimary"
-                variant="subtitle1"
-                className={classes.link}
-                style={{ textDecoration: "none" }}
-              >
-                Integration
-              </Link>
-            </RouterLink>
-            <RouterLink style={{ color: "black", textDecoration: "none" }}>
-              <Link
-                // variant="button"
-                color="textPrimary"
-                href="#"
-                variant="subtitle1"
-                className={classes.link}
-                style={{ textDecoration: "none" }}
-              >
-                Industries
-              </Link>
-            </RouterLink>
-            <RouterLink style={{ color: "black", textDecoration: "none" }}>
-              <Link
-                // variant="button"
-                color="textPrimary"
-                href="#"
-                variant="subtitle1"
-                className={classes.link}
-                style={{ textDecoration: "none" }}
-              >
-                Blog
-              </Link>
-            </RouterLink>
-            <RouterLink style={{ color: "black", textDecoration: "none" }}>
-              <Link
-                // variant="button"
-                color="textPrimary"
-                href="#"
-                variant="subtitle1"
-                className={classes.link}
-                style={{ textDecoration: "none" }}
-              >
-                Book a Demo
-              </Link>
-            </RouterLink>
+            {/* <RouterLink style={{ color: "black", textDecoration: "none" }}> */}
+            <Link
+              // variant="button"
+              color="textPrimary"
+              variant="subtitle1"
+              className={classes.link}
+              style={{ textDecoration: "none" }}
+            >
+              Features
+            </Link>
+            {/* </RouterLink> */}
+            {/* <RouterLink style={{ color: "black", textDecoration: "none" }}> */}
+            <Link
+              // variant="button"
+              color="textPrimary"
+              variant="subtitle1"
+              className={classes.link}
+              style={{ textDecoration: "none" }}
+            >
+              Pricing
+            </Link>
+            {/* </RouterLink> */}
+            {/* <RouterLink style={{ color: "black", textDecoration: "none" }}> */}
+            <Link
+              // variant="button"
+              color="textPrimary"
+              variant="subtitle1"
+              className={classes.link}
+              style={{ textDecoration: "none" }}
+            >
+              Integration
+            </Link>
+            {/* </RouterLink> */}
+            {/* <RouterLink style={{ color: "black", textDecoration: "none" }}> */}
+            <Link
+              // variant="button"
+              color="textPrimary"
+              variant="subtitle1"
+              className={classes.link}
+              style={{ textDecoration: "none" }}
+            >
+              Industries
+            </Link>
+            {/* </RouterLink> */}
+            {/* <RouterLink style={{ color: "black", textDecoration: "none" }}> */}
+            <Link
+              // variant="button"
+              color="textPrimary"
+              href="#"
+              variant="subtitle1"
+              className={classes.link}
+              style={{ textDecoration: "none" }}
+            >
+              Blog
+            </Link>
+            {/* </RouterLink> */}
+            {/* <RouterLink style={{ color: "black", textDecoration: "none" }}> */}
+            <Link
+              // variant="button"
+              color="textPrimary"
+              href="#"
+              variant="subtitle1"
+              className={classes.link}
+              style={{ textDecoration: "none" }}
+            >
+              Book a Demo
+            </Link>
+            {/* </RouterLink> */}
             {/* <div> */}
             {!isAuth && (
               <RouterLink
@@ -191,7 +190,6 @@ export default function NavBar() {
                 <Link
                   // variant="button"
                   color="textPrimary"
-                  href="#"
                   variant="subtitle1"
                   className={classes.link}
                   // style={{ marginLeft: "50px" }}
@@ -209,7 +207,6 @@ export default function NavBar() {
               style={{ color: "black", textDecoration: "none" }}
             >
               <Button
-                href="#"
                 color="primary"
                 variant="subtitle1"
                 className={classes.button}
@@ -221,7 +218,7 @@ export default function NavBar() {
           )}
           {isAuth && (
             <RouterLink
-              to="/auth-login"
+              to="/timesheets"
               style={{ color: "black", textDecoration: "none" }}
             >
               <Button
@@ -230,9 +227,9 @@ export default function NavBar() {
                 variant="subtitle1"
                 className={classes.button}
                 style={{ marginLeft: "50px", padding: "13px", width: "230px" }}
-                onClick={handleLogOut}
+                // onClick={handleLogOut}
               >
-                Log Out
+                Go to App
               </Button>
             </RouterLink>
           )}

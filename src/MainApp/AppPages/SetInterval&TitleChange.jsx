@@ -7,7 +7,7 @@ export default function SetInterval_TitleChange({ initial = 0, end }) {
   const timer = React.useRef();
   const timeout = React.useRef();
 
-  const startTimer = () => {
+  const startTimerInterval = () => {
     if (isRunning) {
       return null;
     }
@@ -25,16 +25,16 @@ export default function SetInterval_TitleChange({ initial = 0, end }) {
     setIsRunning(false);
   };
 
-  document.title = getTimeInString(time);
+  // document.title = getTimeInString(time);
   React.useEffect(() => {
-    return () => clearInterval(timer.current);
+    return () => stopTimer();
   }, []);
 
   return (
     <div>
       <button>Reset</button>
       <h1>{getTimeInString(time)}</h1>
-      <button onClick={isRunning ? stopTimer : startTimer}>
+      <button onClick={isRunning ? stopTimer : startTimerInterval}>
         {isRunning ? "stop" : "start"}
       </button>
     </div>

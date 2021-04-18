@@ -80,8 +80,10 @@ export default function ProjectAccordion({
           })}
         {subTask.length === 0 && (
           <AccordionDetails>
-            <Typography>
-              Add Task To Get Details
+            <Typography style={{ marginLeft: "255px" }}>
+              <div style={{ marginRight: "150px" }}>
+                Add Task To Get Details
+              </div>
               <TaskAddingComponent
                 parentId={subTask.taskId}
                 userId={subTask.userId}

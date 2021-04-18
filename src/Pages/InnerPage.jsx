@@ -5,12 +5,17 @@ import { Link } from "react-router-dom";
 // import ProjectAddingComponent from "../Components/ProjectAddingComponent";
 import TaskAddingComponent from "../Components/TaskAddingComponent";
 import ProjectAccordion from "../Components/ProjectAccordion";
-import "./InnerPage.css"
+import "./InnerPage.css";
 import { useDispatch } from "react-redux";
-import SearchProject from '../Components/SearchProject'
+import SearchProject from "../Components/SearchProject";
 import { getUserProjectId } from "../Redux/action";
+import ProjectEditCard from "../Components/ProjectEditCard";
 
 export default function InnerPage() {
+  let projectDetails = React.useRef();
+  // projectDetails.current = {
+  //   projectName: "okay",
+  // };
   const dispatch = useDispatch();
 
   const project = useSelector((state) => state.log.project);
@@ -26,51 +31,37 @@ export default function InnerPage() {
     // dispatch(getUserTasksUserId(userId));
   }, []);
 
+  let [projectData_edit, setProjectData_edit] = React.useState({});
   return (
     <div className="project_main">
       <div className="project_page">
         <h3 className="inner_page">Projects</h3>
         <div className="project_page">
-        {/* <input className="input"  placeholder="Search"/> */}
-          <SearchProject style={{flex:1}} />
-        <Link style={{ textDecoration: "none" }} to="/input-page">
-          <button  className="add_project">
-            Add Project or Task
-          </button>
-          <button  className="add_project">
-            Filter
-          </button>
-          <button className="add_project">
-            Archieved
-          </button>
-        </Link>
+          {/* <input className="input"  placeholder="Search"/> */}
+          <SearchProject style={{ flex: 1 }} />
+          <Link style={{ textDecoration: "none" }} to="/input-page">
+            <button className="add_project">Add Project or Task</button>
+            <button className="add_project">Filter</button>
+            <button className="add_project">Archieved</button>
+          </Link>
         </div>
       </div>
       <div className="task">
         {project.map((i) => (
-          <div 
+          // <div >
+          <ProjectAccordion
             key={i.projectId}
-            // style={{
-            //   border: "1px solid black",
-            //   width: "1000px",
-            //   display: "grid",
-            //   gridTemplateColumns: "auto auto auto",
-            //   margin: " auto",
-            // }}
+            className="task_details"
+            projectId={i.projectId}
+            subTask={tasks?.filter((task) => task.projectId === i.projectId)}
           >
-            <ProjectAccordion className="task_details"
-              projectId={i.projectId}
-              subTask={tasks?.filter((task) => task.projectId === i.projectId)}
-            >
-              {i.projectName}
-            </ProjectAccordion>
-            
-          </div>
+            {i.projectName}
+          </ProjectAccordion>
+          // </div>
         ))}
-     </div>
-     
-      
-      <h1 >All Tasks</h1>
+      </div>
+
+      <h1>All Tasks</h1>
       <div>
         {tasks?.map((task) => (
           <div
@@ -81,19 +72,18 @@ export default function InnerPage() {
               padding: "1%",
               width: "700px",
               margin: "auto",
-              background:"blue",
-              borderBlockStyle:"5px",
-              marginBottom:"10px",
-              borderRadius:"10px",
+              background: "blue",
+              borderBlockStyle: "5px",
+              marginBottom: "10px",
+              borderRadius: "10px",
               gridTemplateColumns: "150px 400px 100px",
             }}
           >
             <h2>{task.data.details.taskName}</h2>
             <h4>{task.data.details.taskNotes}</h4>
             <div className="another_task">
-              <TaskAddingComponent 
+              <TaskAddingComponent
                 parentId={task.taskId}
-                
                 userId={task.userId}
                 projectId={task.projectId}
               >
