@@ -37,7 +37,8 @@ export const appReducer = (state=initState, action)=>{
             return {
                 ...state,
                 tasks : action.payload,
-                isLoading:false
+                isLoading:false,
+                isError:false
             }
         }
         case GET_TASK_FAILURE:{
@@ -57,7 +58,8 @@ export const appReducer = (state=initState, action)=>{
         case UPDATE_TASK_SUCCESS:{
             return {
                 ...state,
-                isLoading:false
+                isLoading:false,
+                isError:false
             }
         }
         case UPDATE_TASK_FAILURE:{

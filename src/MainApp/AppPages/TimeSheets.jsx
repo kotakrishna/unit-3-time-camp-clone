@@ -157,7 +157,7 @@ export function TimeSheets() {
         <Div className={styles.selectInp} onClick={() => setTaskPro(!taskPro)}>
           Select task and project
         </Div>
-        {taskPro && (
+        {/* {taskPro && (
           <div className={styles.searchModal}>
             <div className={styles.inpPart}>
               <div className={styles.inputF}>
@@ -180,7 +180,7 @@ export function TimeSheets() {
               <div>PROJECT AND TASKS</div>
             </div>
           </div>
-        )}
+        )} */}
         <div className={styles.timerCont}>
           <Div className={styles.note}>note</Div>
           <div className={styles.middle}></div>
