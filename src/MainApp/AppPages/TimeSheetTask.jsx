@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { shallowEqual, useDispatch } from "react-redux";
 import { getTasks, updateTasks, setStart, setStop } from "../Redux/action";
 import * as moment from "moment";
 import styles from "./TimeSheets.module.css";
@@ -12,9 +12,11 @@ import {
   getTimeInString,
   getTimeInStringWithoutHr,
 } from "../../Components/getTimeInString";
+import LoadingSign from "../../Components/LoadingSign";
 
 export function TimeSheetTask({ data }) {
   const dayjs = require("dayjs");
+  const {isLoading,isError} = useSelector(state=>state, shallowEqual)
   const [state, setState] = React.useState(false);
   const [startCheck, setStartCheck] = React.useState(false);
 
@@ -72,30 +74,30 @@ export function TimeSheetTask({ data }) {
   const [isRunning, setIsRunning] = React.useState(false);
   const [time, setTime] = React.useState(0);
   const timer = React.useRef();
-  const startTimerInterval = (prev) => {
-    if (isRunning) {
-      return null;
-    }
-    timer.current = setInterval(() => {
-      setTime((prev) => prev + 1);
-      setIsRunning(true);
-    }, 1000);
-    document.title = getTimeInStringWithoutHr(time);
-  };
-  const stopTimerInterval = (value) => {
-    document.title = "Time Camp";
-    console.log("false");
-    clearInterval(timer.current);
-    setIsRunning(false);
-    setTime(value);
-  };
-  document.title = getTimeInStringWithoutHr(time);
-  if (time === 0 || !isRunning) {
-    document.title = "Time Camp";
-  }
-  React.useEffect(() => {
-    return () => stopTimerInterval();
-  }, []);
+  // const startTimerInterval = (prev) => {
+  //   if (isRunning) {
+  //     return null;
+  //   }
+  //   timer.current = setInterval(() => {
+  //     setTime((prev) => prev + 1);
+  //     setIsRunning(true);
+  //   }, 1000);
+  //   document.title = getTimeInStringWithoutHr(time);
+  // };
+  // const stopTimerInterval = (value) => {
+  //   document.title = "Time Camp";
+  //   console.log("false");
+  //   clearInterval(timer.current);
+  //   setIsRunning(false);
+  //   setTime(value);
+  // };
+  // document.title = getTimeInStringWithoutHr(time);
+  // if (time === 0 || !isRunning) {
+  //   document.title = "Time Camp";
+  // }
+  // React.useEffect(() => {
+  //   return () => stopTimerInterval();
+  // }, []);
 
   const handleStartAndStop = () => {
     tasks?.forEach((item) => {
@@ -115,7 +117,7 @@ export function TimeSheetTask({ data }) {
         };
 
         let timeSpent = data.data.details.timeSpent;
-        startTimerInterval();
+        // startTimerInterval();
         console.log(params.stopTime);
         dispatch(
           updateTasks(
@@ -141,7 +143,7 @@ export function TimeSheetTask({ data }) {
               (new Date(params.stopTime) - new Date(params.startTime)) / 1000
             ),
           ];
-          stopTimerInterval(timeSpent[timeSpent.length - 1]);
+          // stopTimerInterval(timeSpent[timeSpent.length - 1]);
           console.log(params.stopTime);
           dispatch(
             updateTasks(
@@ -178,7 +180,7 @@ export function TimeSheetTask({ data }) {
   const randomColor = () => {
     return Math.floor(Math.random() * 256);
   };
-  return (
+  return isLoading ? <LoadingSign /> : (
     <div
       style={{
         display: "flex",
