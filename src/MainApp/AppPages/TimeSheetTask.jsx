@@ -65,6 +65,8 @@ export function TimeSheetTask({ data }) {
             localStorage.getItem("userId")
           )
         );
+      } else if(strSeconds>stpSeconds) {
+        alert("Start time should be less than stop time!")
       }
   },[manualStrTime, manualStpTime])
   const [isRunning, setIsRunning] = React.useState(false);
