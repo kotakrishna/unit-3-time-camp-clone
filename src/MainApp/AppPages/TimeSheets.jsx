@@ -153,7 +153,7 @@ export function TimeSheets() {
         </div>
       </div>
 
-      <div className={styles.taskCont} style={{ position: "relative" }}>
+      <div className={styles.taskCont} style={{}}>
         <Div className={styles.selectInp} onClick={() => setTaskPro(!taskPro)}>
           Select task and project
         </Div>
