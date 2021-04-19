@@ -44,9 +44,15 @@
 
 # Styled-Components
 
+# Vercel for Hosting
+
 ### Default Login and Password
 
 Email:"timeCamp@timer"
 password: "Login"
 
 ### Json-Server- https://json-server-mocker-masai-test.herokuapp.com/
+
+### Hosted on Vercel-
+
+https://unit-3-time-camp-clone.vercel.app/
