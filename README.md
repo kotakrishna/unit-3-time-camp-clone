@@ -6,45 +6,50 @@
 
 @kotakrishna -
 
-# Built-
+## Built-
 
-# Login Page,
+- Login Page,
+- 
+![Screenshot from 2021-07-27 10-48-54](https://user-images.githubusercontent.com/68987839/127100022-16060048-8e08-4e52-ab16-2dc4d5ce9b30.png)
 
-# Registration Page,
+- Registration Page,
+- 
+![Screenshot from 2021-07-27 10-48-57](https://user-images.githubusercontent.com/68987839/127100003-6e49f965-a0e5-449e-b0b2-c1b7b3abaf1d.png)
 
-# Project Page,
+- Project Page,
 
-# Reports Page
+- Reports Page
 
 @ajcodeskills-
 
-# Built -
+## Built -
 
-# Home/ Landing Page,
+- Home/ Landing Page,
+![Screenshot from 2021-07-27 10-48-51](https://user-images.githubusercontent.com/68987839/127099965-61679718-960a-4bed-b746-80b2dccce78a.png)
 
-# Time Sheets,
+- Time Sheets,
 
-# Timer Functionality,
+- Timer Functionality,
 
-### Libraries used-
+## Libraries used-
 
-# Material UI
+- Material UI
 
-# React-router-dom
+- React-router-dom
 
-# React-Redux
+- React-Redux
 
-# React-Thunk
+- React-Thunk
 
-# React-Calender
+- React-Calender
 
-# Axios
+- Axios
 
-# Day-js
+- Day-js
 
-# Styled-Components
+- Styled-Components
 
-# Vercel for Hosting
+## Vercel for Hosting
 
 ### Default Login and Password
 
