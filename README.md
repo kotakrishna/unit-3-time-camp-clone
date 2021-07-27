@@ -2,7 +2,7 @@
 
 # Description:
 
-# This is an Clone of TimeCamp site which was created by @kotakrishna -https://github.com/kotakrishna/ and @ajcodeskills-https://github.com/ajcodeskills , during the construct week at Masai School.
+### This is an Clone of TimeCamp site which was created by @kotakrishna -https://github.com/kotakrishna/ and @ajcodeskills-https://github.com/ajcodeskills , during the construct week at Masai School.
 
 @kotakrishna -
 
