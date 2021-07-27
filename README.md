@@ -9,11 +9,9 @@
 ## Built-
 
 - Login Page,
-- 
 ![Screenshot from 2021-07-27 10-48-54](https://user-images.githubusercontent.com/68987839/127100022-16060048-8e08-4e52-ab16-2dc4d5ce9b30.png)
 
 - Registration Page,
-- 
 ![Screenshot from 2021-07-27 10-48-57](https://user-images.githubusercontent.com/68987839/127100003-6e49f965-a0e5-449e-b0b2-c1b7b3abaf1d.png)
 
 - Project Page,
